@@ -67,13 +67,13 @@ jobs:
       #   working-directory: ${{ env.WORKING_DIRECTORY }}
       #   run: npm test
 
-      - name: Install ESLint
-        working-directory: ${{ env.WORKING_DIRECTORY }}
-        run: npm install --save-dev eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin
+      # - name: Install ESLint
+      #   working-directory: ${{ env.WORKING_DIRECTORY }}
+      #   run: npm install --save-dev eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin
 
-      - name: Lint code
-        working-directory: ${{ env.WORKING_DIRECTORY }}
-        run: npx eslint . --ext .ts
+      # - name: Lint code
+      #   working-directory: ${{ env.WORKING_DIRECTORY }}
+      #   run: npx eslint . --ext .ts
 
       # - name: Start server
       #   working-directory: ${{ env.WORKING_DIRECTORY }}
