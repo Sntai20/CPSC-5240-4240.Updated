@@ -25,10 +25,12 @@ jobs:
 
       # Install dependencies
       - name: Install dependencies
+        working-directory: MongooseDB
         run: npm install
 
       # Compile TypeScript files
       - name: Compile TypeScript
+        working-directory: MongooseDB
         run: npx tsc
 
       # Start MongoDB service
@@ -39,20 +41,25 @@ jobs:
 
       # Populate the database with sample data
       - name: Populate MongoDB with sample data
+        working-directory: MongooseDB
         run: mongo --eval "load('createDB/createToDoSampleData.js')"
 
       # Populate the database with admin user
       - name: Populate MongoDB with admin user
+        working-directory: MongooseDB
         run: mongo --eval "load('createDB/createAdminUser.js')"
 
       # Run tests
       - name: Run tests
+        working-directory: MongooseDB
         run: npm test
 
       # Lint the code (optional)
       - name: Lint code
+        working-directory: MongooseDB
         run: npx eslint . --ext .ts
 
-        run: node AppServer.js &onal for deployment testing)
+      # Start the server (optional for deployment testing)
       - name: Start server
-        run: node AppServer.js
+        working-directory: MongooseDB
+        run: node AppServer.js &
