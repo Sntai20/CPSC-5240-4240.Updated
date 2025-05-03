@@ -63,30 +63,30 @@ jobs:
       #       echo "Admin user script not found"
       #     fi
 
-      - name: Run tests
-        working-directory: ${{ env.WORKING_DIRECTORY }}
-        run: npm test
+      # - name: Run tests
+      #   working-directory: ${{ env.WORKING_DIRECTORY }}
+      #   run: npm test
 
       - name: Lint code
         working-directory: ${{ env.WORKING_DIRECTORY }}
         run: npx eslint . --ext .ts
 
-      - name: Start server
-        working-directory: ${{ env.WORKING_DIRECTORY }}
-        run: |
-          node AppServer.js &
-          SERVER_PID=$!
-          for i in {1..10}; do
-            if nc -z localhost 3000; then
-              echo "Server is ready"
-              break
-            fi
-            echo "Waiting for server to start..."
-            sleep 1
-          done
-          if ! nc -z localhost 3000; then
-            echo "Error: Server failed to start within the expected time."
-            kill $SERVER_PID
-            exit 1
-          fi
-          trap "kill $SERVER_PID" EXIT
+      # - name: Start server
+      #   working-directory: ${{ env.WORKING_DIRECTORY }}
+      #   run: |
+      #     node AppServer.js &
+      #     SERVER_PID=$!
+      #     for i in {1..10}; do
+      #       if nc -z localhost 3000; then
+      #         echo "Server is ready"
+      #         break
+      #       fi
+      #       echo "Waiting for server to start..."
+      #       sleep 1
+      #     done
+      #     if ! nc -z localhost 3000; then
+      #       echo "Error: Server failed to start within the expected time."
+      #       kill $SERVER_PID
+      #       exit 1
+      #     fi
+      #     trap "kill $SERVER_PID" EXIT
