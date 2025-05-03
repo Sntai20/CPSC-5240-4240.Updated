@@ -15,27 +15,22 @@ jobs:
       WORKING_DIRECTORY: MongooseDB
 
     steps:
-      # Checkout the repository
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Set up Node.js
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '16'
 
-      # Install dependencies
       - name: Install dependencies
         working-directory: ${{ env.WORKING_DIRECTORY }}
         run: npm install
 
-      # Compile TypeScript files
       - name: Compile TypeScript
         working-directory: ${{ env.WORKING_DIRECTORY }}
         run: npx tsc
 
-      # Start MongoDB service
       - name: Start MongoDB
         uses: supercharge/mongodb-github-action@v1
         with:
@@ -50,7 +45,6 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y mongodb-org-shell
 
-      # Populate the database with sample data
       # - name: Populate MongoDB with sample data
       #   working-directory: ${{ env.WORKING_DIRECTORY }}
       #   run: |
@@ -60,7 +54,6 @@ jobs:
       #       echo "Sample data script not found"
       #     fi
 
-      # Populate the database with admin user
       # - name: Populate MongoDB with admin user
       #   working-directory: ${{ env.WORKING_DIRECTORY }}
       #   run: |
@@ -70,21 +63,19 @@ jobs:
       #       echo "Admin user script not found"
       #     fi
 
-      # Run tests
       - name: Run tests
         working-directory: ${{ env.WORKING_DIRECTORY }}
         run: npm test
 
-      # Lint the code (optional)
       - name: Lint code
         working-directory: ${{ env.WORKING_DIRECTORY }}
         run: npx eslint . --ext .ts
 
-      # Start the server (optional for deployment testing)
       - name: Start server
         working-directory: ${{ env.WORKING_DIRECTORY }}
         run: |
           node AppServer.js &
+          SERVER_PID=$!
           for i in {1..10}; do
             if nc -z localhost 3000; then
               echo "Server is ready"
@@ -93,3 +84,9 @@ jobs:
             echo "Waiting for server to start..."
             sleep 1
           done
+          if ! nc -z localhost 3000; then
+            echo "Error: Server failed to start within the expected time."
+            kill $SERVER_PID
+            exit 1
+          fi
+          trap "kill $SERVER_PID" EXIT
