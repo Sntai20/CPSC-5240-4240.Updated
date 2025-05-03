@@ -42,24 +42,24 @@ jobs:
           mongodb-version: '5.0'
 
       # Populate the database with sample data
-      - name: Populate MongoDB with sample data
-        working-directory: ${{ env.WORKING_DIRECTORY }}
-        run: |
-          if [ -f "createDB/createToDoSampleData.js" ]; then
-            mongo --eval "load('createDB/createToDoSampleData.js')"
-          else
-            echo "Sample data script not found"
-          fi
+      # - name: Populate MongoDB with sample data
+      #   working-directory: ${{ env.WORKING_DIRECTORY }}
+      #   run: |
+      #     if [ -f "createDB/createToDoSampleData.js" ]; then
+      #       mongo --eval "load('createDB/createToDoSampleData.js')"
+      #     else
+      #       echo "Sample data script not found"
+      #     fi
 
       # Populate the database with admin user
-      - name: Populate MongoDB with admin user
-        working-directory: ${{ env.WORKING_DIRECTORY }}
-        run: |
-          if [ -f "createDB/createAdminUser.js" ]; then
-            mongo --eval "load('createDB/createAdminUser.js')"
-          else
-            echo "Admin user script not found"
-          fi
+      # - name: Populate MongoDB with admin user
+      #   working-directory: ${{ env.WORKING_DIRECTORY }}
+      #   run: |
+      #     if [ -f "createDB/createAdminUser.js" ]; then
+      #       mongo --eval "load('createDB/createAdminUser.js')"
+      #     else
+      #       echo "Admin user script not found"
+      #     fi
 
       # Run tests
       - name: Run tests
