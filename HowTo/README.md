@@ -7,7 +7,7 @@ File content:
 * DbClient.ts - mongo db client
 * DB population files are stored on the createDB file
 
-Make sure you install the node.js server and Mongo DB sofware from the side.  Ensure your path variable contains the execution path of the node.js and mongo binary.
+Make sure you install the node.js server and Mongo DB software from the side.  Ensure your path variable contains the execution path of the node.js and mongo binary.
 
 To execute the server db and then the node server with the following commands:
 
