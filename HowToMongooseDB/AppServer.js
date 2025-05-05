@@ -6,7 +6,10 @@ dotenv.config();
 const port = process.env.PORT;
 const dbUser = process.env.DB_USER;
 const dbPassword = process.env.DB_PASSWORD;
-const mongoDBConnection = 'mongodb://' + dbUser + ':' + encodeURIComponent(dbPassword) + process.env.DB_INFO;
+let mongoDBConnection = 'mongodb://' + process.env.DB_INFO;
+if (dbUser && dbPassword) {
+    mongoDBConnection = 'mongodb://' + dbUser + ':' + encodeURIComponent(dbPassword) + '@' + process.env.DB_INFO;
+}
 console.log("server db connection URL " + mongoDBConnection);
 let server = new App_1.App(mongoDBConnection).expressApp;
 server.listen(port);
