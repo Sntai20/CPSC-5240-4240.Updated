@@ -1,38 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>How-To Tutorials</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tutorial Platform - Home</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons (for icons) -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="container mt-5">
-    <h1 class="text-center">How-To Tutorials</h1>
-    <div class="row" id="tutorials-container">
-      <!-- Tutorials will be dynamically loaded here -->
-    </div>
-  </div>
-  <script>
-    fetch('/api/tutorials')
-      .then((response) => response.json())
-      .then((data) => {
-        const container = document.getElementById('tutorials-container');
-        data.forEach((tutorial) => {
-          const card = document.createElement('div');
-          card.className = 'col-md-4';
-          card.innerHTML = `
-            <div class="card mb-4">
-              <div class="card-body">
-                <h5 class="card-title">${tutorial.title}</h5>
-                <p class="card-text">${tutorial.content.substring(0, 100)}...</p>
-                <a href="#" class="btn btn-primary">Read More</a>
-              </div>
+    <!-- Header Section -->
+    <header class="bg-dark text-white p-4">
+        <div class="container">
+            <h1>Welcome to Tutorial Platform</h1>
+            <p>Your go-to platform for learning and building with tutorials.</p>
+        </div>
+    </header>
+
+    <!-- Search Bar Section -->
+    <section class="search-bar py-4 bg-light">
+        <div class="container text-center">
+            <input type="text" class="form-control w-50 mx-auto" id="searchInput" placeholder="Search Tutorials..." />
+            <button class="btn btn-primary mt-3" onclick="searchTutorial()">Search</button>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">Browse by Categories</h2>
+            <div class="row">
+                <!-- Category Card 1 -->
+                <div class="col-md-3 mb-4">
+                    <div class="card">
+                        <img src="https://via.placeholder.com/150" class="card-img-top" alt="Database">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Database</h5>
+                            <p class="card-text">Learn about databases like MongoDB, SQL, and more.</p>
+                            <a href="#" class="btn btn-info">Browse Tutorials</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Category Card 2 -->
+                <div class="col-md-3 mb-4">
+                    <div class="card">
+                        <img src="https://via.placeholder.com/150" class="card-img-top" alt="Web Development">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Web Development</h5>
+                            <p class="card-text">Build dynamic websites with HTML, CSS, JavaScript, and more.</p>
+                            <a href="#" class="btn btn-info">Browse Tutorials</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Category Card 3 -->
+                <div class="col-md-3 mb-4">
+                    <div class="card">
+                        <img src="https://via.placeholder.com/150" class="card-img-top" alt="Frontend">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Frontend</h5>
+                            <p class="card-text">Explore frontend frameworks like React, Angular, and Vue.js.</p>
+                            <a href="#" class="btn btn-info">Browse Tutorials</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Category Card 4 -->
+                <div class="col-md-3 mb-4">
+                    <div class="card">
+                        <img src="https://via.placeholder.com/150" class="card-img-top" alt="Backend">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Backend</h5>
+                            <p class="card-text">Dive into backend technologies like Node.js, Express, and Python.</p>
+                            <a href="#" class="btn btn-info">Browse Tutorials</a>
+                        </div>
+                    </div>
+                </div>
             </div>
-          `;
-          container.appendChild(card);
-        });
-      });
-  </script>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="bg-dark text-white py-4 text-center">
+        <p>&copy; 2025 Tutorial Platform. All rights reserved.</p>
+    </footer>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Custom JS -->
+    <script>
+        // Function to handle the search (for demonstration purposes)
+        function searchTutorial() {
+            const searchTerm = document.getElementById('searchInput').value;
+            if (searchTerm) {
+                alert(`Searching for tutorials related to: ${searchTerm}`);
+            } else {
+                alert('Please enter a search term');
+            }
+        }
+    </script>
 </body>
 </html>
