@@ -1,0 +1,2 @@
+# Ignore all Javascript files in the HowTo directory
+HowTo/**/*.js*
