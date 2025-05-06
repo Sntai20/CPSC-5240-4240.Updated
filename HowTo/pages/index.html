@@ -1,93 +1,108 @@
-<html>
-	<head> 
-		<!-- Latest compiled and minified CSS -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tutorial Platform - Home</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons (for icons) -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="bg-dark text-white p-4">
+        <div class="container">
+            <h1>Welcome to Tutorial Platform</h1>
+            <p>Your go-to platform for learning and building with tutorials.</p>
+        </div>
+    </header>
 
-		<!-- Optional theme -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
-	</head>
-	<body onload="initXHR('home', null)">
-		<div class="container">
+    <!-- Search Bar Section -->
+    <section class="search-bar py-4 bg-light">
+        <div class="container text-center">
+            <input type="text" class="form-control w-50 mx-auto" id="searchInput" placeholder="Search Tutorials..." />
+            <button class="btn btn-primary mt-3" onclick="searchTutorial()">Search</button>
+        </div>
+    </section>
 
-		  <!-- Static navbar -->
-		  <nav class="navbar navbar-default">
-			<div class="container-fluid">
-			  <div class="navbar-header">
-				<a class="navbar-brand" href="javascript:initXHR('home', null)">To Do</a>
-			  </div>
-			  <div id="navbar" class="navbar-collapse collapse">
-				<ul class="nav navbar-nav">
-				  <li><a href="#">Home</a></li>
-				  <li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">List<span class="caret"></span></a>
-					<ul class="dropdown-menu" role="menu">
-					  <li><a href="#">Create</a></li>
-					  <li><a href="javascript:initXHR('lists', null)">Active</a></li>
-					  <li><a href="#">Disabled</a></li>
-					</ul>
-				  </li>
-				  <li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Shared<span class="caret"></span></a>
-					<ul class="dropdown-menu" role="menu">
-					  <li><a href="#">Active</a></li>
-					  <li><a href="#">Pending</a></li>
-					</ul>
-				  </li>
-				</ul>
-				<ul class="nav navbar-nav navbar-right">
-				  <li><a href="#">Login</a></li>
-				</ul>
-			  </div><!--/.nav-collapse -->
-			</div><!--/.container-fluid -->
-		  </nav>
-		  
-		<div id="home">
-		  <!-- Main component for a primary marketing message or call to action -->
-		  <div class="jumbotron">
-			<h1>To Do List</h1>
-			<p>Keep track of all of things you need to do by creating lists and sharing items with friends.</p>
-			<p>
-			  <a class="btn btn-lg btn-primary" href="javascript:initXHR('lists', null)" role="button">View</a>
-			</p>
-		  </div>
-		</div>
-		
-		<div id="lists" style="display:none;">
-		</div>
+    <!-- Categories Section -->
+    <section class="categories py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">Browse by Categories</h2>
+            <div class="row">
+                <!-- Category Card 1: Plumbing -->
+                <div class="col-md-3 mb-4">
+                    <div class="card">
+                        <img src="plumbing.jpeg" class="card-img-top" alt="Plumbing">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Plumbing</h5>
+                            <p class="card-text">Fix leaks, install pipes, and handle basic plumbing tasks.</p>
+                            <a href="#" class="btn btn-info">Browse Tutorials</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Category Card 2: Furniture -->
+                <div class="col-md-3 mb-4">
+                    <div class="card">
+                        <img src="furniture.png" class="card-img-top" alt="Furniture">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Furniture</h5>
+                            <p class="card-text">Learn to assemble, repair, and restore home furniture.</p>
+                            <a href="#" class="btn btn-info">Browse Tutorials</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Category Card 3: Technology -->
+                <div class="col-md-3 mb-4">
+                    <div class="card">
+                        <img src="technology.png" class="card-img-top" alt="Technology">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Technology</h5>
+                            <p class="card-text">Explore how-to guides on gadgets, software, and digital tools.</p>
+                            <a href="#" class="btn btn-info">Browse Tutorials</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Category Card 4: Electronics -->
+                <div class="col-md-3 mb-4">
+                    <div class="card">
+                        <img src="electic.png" class="card-img-top" alt="Electronics">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Electronics</h5>
+                            <p class="card-text">Repair devices, work with circuits, and understand electronics.</p>
+                            <a href="#" class="btn btn-info">Browse Tutorials</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-		<div id="gList" style="display:none;">
-			<div class="panel panel-default">
-			  <!-- Default panel contents -->
-			  <div class="panel-heading"> 
-				  <h3>List</h3>
-				  <div>
-					<a href="#"><span class="glyphicon glyphicon-edit"></span></a>
-					<a href="#"><span class="glyphicon glyphicon-trash"></span></a>
-					<a href="#"><span class="glyphicon glyphicon-ok"></span></a>
-				  </div>
-			  </div>
-				<!-- Table -->
-				<table class="table" style="font-size:10pt;">
-					<thead>
-						<tr>
-							<th>Items</th>
-							<th width="5%">Shared</th>
-							<th width="5%">Status</th>
-						</tr>
-					</thead>
-					<tbody id='tasks'>
-					</tbody>
-				</table>
-			</div>
-		</div>
-		
-		</div> <!-- /container -->
-	
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-	<script src="/script.js"></script>
-	</body>
+    <!-- Footer Section -->
+    <footer class="bg-dark text-white py-4 text-center">
+        <p>&copy; 2025 Tutorial Platform. All rights reserved.</p>
+    </footer>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Custom JS -->
+    <script>
+        // Function to handle the search (for demonstration purposes)
+        function searchTutorial() {
+            const searchTerm = document.getElementById('searchInput').value;
+            if (searchTerm) {
+                alert(`Searching for tutorials related to: ${searchTerm}`);
+            } else {
+                alert('Please enter a search term');
+            }
+        }
+    </script>
+</body>
 </html>
