@@ -12,7 +12,7 @@ jobs:
   build-and-test:
     runs-on: ubuntu-latest
     env:
-      WORKING_DIRECTORY: MongooseDB
+      WORKING_DIRECTORY: HowTo
 
     steps:
       - name: Checkout code
