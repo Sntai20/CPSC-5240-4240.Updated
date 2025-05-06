@@ -1,17 +1,16 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const dotenv = require("dotenv");
-const App_1 = require("./App");
+exports.__esModule = true;
+var dotenv = require("dotenv");
+var App_1 = require("./App");
 dotenv.config();
-const port = process.env.PORT;
-const dbUser = process.env.DB_USER;
-const dbPassword = process.env.DB_PASSWORD;
-let mongoDBConnection = 'mongodb://' + process.env.DB_INFO;
+var port = process.env.PORT;
+var dbUser = process.env.DB_USER;
+var dbPassword = process.env.DB_PASSWORD;
+var mongoDBConnection = 'mongodb://' + process.env.DB_INFO;
 if (dbUser && dbPassword) {
     mongoDBConnection = 'mongodb://' + dbUser + ':' + encodeURIComponent(dbPassword) + '@' + process.env.DB_INFO;
 }
 console.log("server db connection URL " + mongoDBConnection);
-let server = new App_1.App(mongoDBConnection).expressApp;
+var server = new App_1.App(mongoDBConnection).expressApp;
 server.listen(port);
 console.log("server running in port " + port);
-//# sourceMappingURL=AppServer.js.map

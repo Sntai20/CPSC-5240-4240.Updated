@@ -1,5 +1,5 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
+exports.__esModule = true;
 // interface IStep extends Mongoose.Document {
 //     stepNumber: number;
 //     description: string;
@@ -22,4 +22,3 @@ Object.defineProperty(exports, "__esModule", { value: true });
 //     // steps: IStep[];
 //     // published: boolean;
 //   }
-//# sourceMappingURL=ITutorialModel.js.map
