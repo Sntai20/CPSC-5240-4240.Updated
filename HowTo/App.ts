@@ -19,8 +19,8 @@ class App {
   {
     this.expressApp = express();
     this.middleware();
-    this.routes();
     this.Lists = new ListModel(mongoDBConnection);
+    this.Tasks = new TaskModel(mongoDBConnection);
     this.Tasks = new TaskModel(mongoDBConnection);
     this.Tutorials = new TutorialModel(mongoDBConnection);
     this.Tutorials.createModel().then(() => {
