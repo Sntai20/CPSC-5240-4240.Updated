@@ -1,23 +1,27 @@
 HowTo Website - Backend API and DB test instructions:
 
 * Step 0: Navigate into the HowTo directory and create db directory if it does not exist
-> cd HowTo
-> mkdir db
+    > cd HowTo
+    > mkdir db
 
 * Step 1: Run MongoDB database:
-> mongod --port 3000 --dbpath=".\db"
+    - For Windows (bash)
+    > mongod --port 3000 --dbpath=".\db" 
+
+    - For Mac (zsh)
+    > mongod --port 3000 --dbpath= ./db
 
 * Step 2: Install Node
-> npm install
+    > npm install
 
 * Step 3: Seed the database with population data
-> node createDb/createSampleData.js
+    > node createDb/createSampleData.js
 
 * Step 4: Compile and generate node/express server
-npx tsc AppServer.ts
+    > npx tsc AppServer.ts
 
 * Step 5: Run node server on port 8080
-node AppServer.js
+    > node AppServer.js
 
 Hifi Screen - Home Page
 > http://localhost:8080/
