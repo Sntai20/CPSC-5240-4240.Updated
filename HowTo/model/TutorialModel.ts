@@ -46,29 +46,6 @@ class TutorialModel {
             }
         );
 
-        // this.schema = new Mongoose.Schema(
-        //     {
-        //         title: { type: String, required: true },
-        //         // description: { type: String, required: true },
-        //         // tutorialId: { type: String, required: true, unique: true },
-        //         // createdDate: { type: Date, default: Date.now },
-        //         // updatedDate: { type: Date, default: Date.now },
-        //         // authorId: { type: String, required: true },
-        //         // authorName: { type: String, required: true },
-        //         // category: { type: String, required: true },
-        //         // tags: { type: [String], default: [] },
-        //         // views: { type: Number, default: 0 },
-        //         // likes: { type: Number, default: 0 },
-        //         // dislikes: { type: Number, default: 0 },
-        //         // steps: [this.stepsSchema],
-        //         // published: { type: Boolean, default: false }
-        //     }, 
-        //     { 
-        //         // collection: 'tutorials',
-        //         collection: 'tutorialsTests',
-        //         // timestamps: { createdAt: 'createdDate', updatedAt: 'updatedDate' }
-        //     }
-        // );
     }
 
     public async createModel() {
