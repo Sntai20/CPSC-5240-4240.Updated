@@ -9,21 +9,69 @@
 
 Starting from the `HowTo` directory, setup and run the Mongo database.
 
-```bash
-# Navigate into the HowTo directory and create db directory if it does not exist.
-cd HowTo
-mkdir out//db
 
-# Run MongoDB database
+### Start the MongoDB Database
+
+Navigate into the HowTo directory.
+
+```text
+cd HowTo
+```
+
+Select your operating system to start the MongoDB database:
+
+<details>
+<summary>Windows</summary>
+
+```powershell
+# Run MongoDB database on Windows
 . ./startDbServer.cmd
 ```
 
-### Populate the database
+</details>
 
-Open a new terminal and connect to the database using the database client. Once connected to the database, run the following commands to populate the demo data.
+<details>
+<summary>Linux/Mac</summary>
 
 ```bash
+# Make the script executable and run MongoDB database on Linux/Mac
+chmod +x start.DbServer.sh
+./start.DbServer.sh
+```
+
+</details>
+
+### Connect and Populate the database
+
+Open a new terminal and connect to the database using the database client. 
+
+Select your operating system to start the MongoDB client:
+
+<details>
+<summary>Windows</summary>
+
+```powershell
+cd HowTo
+# Run database client on Windows
 . ./startDbClient.admin.cmd
+```
+
+</details>
+
+<details>
+<summary>Linux/Mac</summary>
+
+```bash
+cd HowTo
+# Run database client on Linux/Mac
+mongo --port 3000 --authenticationDatabase admin
+```
+
+</details>
+
+Once connected to the database, run the following commands to populate the demo data.
+
+```bash
 load ('createDB/createSampleData.js');
 
 show dbs

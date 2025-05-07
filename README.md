@@ -1,14 +1,123 @@
-run mongod --port 3000 --dbpath="C:\data\db" (similar to start.toDoSample.cmd) depends where your mongodb data file is present 
->mongosh "C:\Users\meher\SU-CLASSES\SAAS_class\project\CPSC-5240-4240.Updated\HowToMongooseDB\createDB\createSampleData.js"
-run mongosh (shell to retrieve the data from db and check ) 
- use tutorialPlatform
- db.tutorials.find().pretty()
- db.comments.find().pretty()
+# HowTo Website
 
-run node AppServer.js and open localhost 8080 to see the webpage 
+1. Setup and run the Mongo database.
+    1. Seed the database with the population data.
+1. Build and run the Backend API on port 8080.
+1. Test the API calls to the database.
 
-----
-working till here but there are some errors between the appserver.js server and database 
-once that is fixed its possible to retrive data from database to the frontend UI without mongoshell 
+## Database setup guide
 
-yet to test the rest api endpoints on postman 
+Starting from the `HowTo` directory, setup and run the Mongo database.
+
+
+### Start the MongoDB Database
+
+Navigate into the HowTo directory.
+
+```text
+cd HowTo
+```
+
+Select your operating system to start the MongoDB database:
+
+<details>
+<summary>Windows</summary>
+
+```powershell
+# Run MongoDB database on Windows
+. ./startDbServer.cmd
+```
+
+</details>
+
+<details>
+<summary>Linux/Mac</summary>
+
+```bash
+# Make the script executable and run MongoDB database on Linux/Mac
+chmod +x start.DbServer.sh
+./start.DbServer.sh
+```
+
+</details>
+
+### Connect and Populate the database
+
+Open a new terminal and connect to the database using the database client. 
+
+Select your operating system to start the MongoDB client:
+
+<details>
+<summary>Windows</summary>
+
+```powershell
+cd HowTo
+# Run database client on Windows
+. ./startDbClient.admin.cmd
+```
+
+</details>
+
+<details>
+<summary>Linux/Mac</summary>
+
+```bash
+cd HowTo
+# Run database client on Linux/Mac
+mongo --port 3000 --authenticationDatabase admin
+```
+
+</details>
+
+Once connected to the database, run the following commands to populate the demo data.
+
+```bash
+load ('createDB/createSampleData.js');
+
+show dbs
+use tutorialPlatform
+show collections
+db.tutorials.find()
+db.comments.find()
+
+load ('createDB/createAdminUser.js');
+show users
+exit
+```
+
+## Backend API build and run
+
+Starting from the `HowTo` directory, install npm packages, compile the node server, and run the node server.
+
+```bash
+cd HowTo
+
+# Install the npm packages
+npm install
+
+# Compile the node server
+npx tsc
+
+# Run node server on port 8080
+node AppServer.js
+```
+
+## Test API Guide
+
+Test the API calls to the database.
+
+Hifi Screen - Home Page
+> http://localhost:8080/
+
+Routes (To test in POSTMAN):
+Tutorial - GET all / POST
+> http://localhost:8080/app/tutorials
+
+Tutorial - GET by ID
+> http://localhost:8080/app/tutorials/{tutorialId}
+
+Comments - GET all / POST
+> http://localhost:8080/app/comments
+
+Comments - GET by ID
+> http://localhost:8080/app/comments/{commentID}
