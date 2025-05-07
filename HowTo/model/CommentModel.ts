@@ -29,10 +29,7 @@ class CommentModel {
 
   public async createModel(): Promise<void> {
     try {
-      await Mongoose.connect(this.dbConnectionString, {
-        useNewUrlParser:    true,
-        useUnifiedTopology: true
-      });
+      await Mongoose.connect(this.dbConnectionString, {});
       this.model = Mongoose.model<ICommentModel & Mongoose.Document>(
         "Comment",
         this.schema
