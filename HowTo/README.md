@@ -1,35 +1,62 @@
-HowTo Website - Backend API and DB test instructions:
+# HowTo Website
 
-* Step 0: Navigate into the HowTo directory and create db directory if it does not exist
-    > cd HowTo
-    > mkdir db
+1. Setup and run the Mongo database.
+    1. Seed the database with the population data.
+1. Build and run the Backend API on port 8080.
+1. Test the API calls to the database.
 
-* Step 1: Run MongoDB database:
-    - For Windows (bash)
-    > mongod --port 3000 --dbpath=".\db" 
+## Database setup guide
 
-    - For Mac (zsh)
-    > mongod --port 3000 --dbpath= ./db
+Starting from the `HowTo` directory, setup and run the Mongo database.
 
-* Step 2: Install Node
-    > npm install
+```bash
+# Navigate into the HowTo directory and create db directory if it does not exist.
+cd HowTo
+mkdir out//db
 
-* Step 3: Seed the database with population data
-    > node createDb/createSampleData.js
-    >mongosh "C:\Users\meher\SU-CLASSES\SAAS_class\project\CPSC-5240-4240.Updated\HowToMongooseDB\createDB\createSampleData.js"
+# Run MongoDB database
+. ./startDbServer.cmd
+```
 
-    run mongosh --port 3000 (shell to retrieve the data from db and check ) 
-    use tutorialPlatform
-    db.tutorials.find().pretty()
-    db.comments.find().pretty()
+### Populate the database
 
-    run node AppServer.js and open localhost 8080 to see the webpage 
+Open a new terminal and connect to the database using the database client. Once connected to the database, run the following commands to populate the demo data.
 
-* Step 4: Compile and generate node/express server
-    > npx tsc AppServer.ts
+```bash
+. ./startDbClient.admin.cmd
+load ('createDB/createSampleData.js');
 
-* Step 5: Run node server on port 8080
-    > node AppServer.js
+show dbs
+use tutorialPlatform
+show collections
+db.tutorials.find()
+db.comments.find()
+
+load ('createDB/createAdminUser.js');
+show users
+exit
+```
+
+## Backend API build and run
+
+Starting from the `HowTo` directory, install npm packages, compile the node server, and run the node server.
+
+```bash
+cd HowTo
+
+# Install the npm packages
+npm install
+
+# Compile the node server
+npx tsc
+
+# Run node server on port 8080
+node AppServer.js
+```
+
+## Test API Guide
+
+Test the API calls to the database.
 
 Hifi Screen - Home Page
 > http://localhost:8080/
