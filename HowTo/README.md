@@ -1,38 +1,48 @@
-This directory contains one express servers:
-* Server.js + App.js - Encapsulated Node/Express web server w/ Mongo Access
+HowTo Website - Backend API and DB test instructions:
 
-File content:
-* Server.ts - based http server
-* App.ts - express server
-* DbClient.ts - mongo db client
-* DB population files are stored on the createDB file
+* Step 0: Navigate into the HowTo directory and create db directory if it does not exist
+    > cd HowTo
+    > mkdir db
 
-Make sure you install the node.js server and Mongo DB software from the side.  Ensure your path variable contains the execution path of the node.js and mongo binary.
+* Step 1: Run MongoDB database:
+    - For Windows (bash)
+    > mongod --port 3000 --dbpath=".\db" 
 
-To execute the server db and then the node server with the following commands:
+    - For Mac (zsh)
+    > mongod --port 3000 --dbpath= ./db
 
-//create the db file directory
-0. md db
+* Step 2: Install Node
+    > npm install
 
-//Starts the DB server on port 3000
-1. start.toDoSample.cmd
+* Step 3: Seed the database with population data
+    > node createDb/createSampleData.js
+    >mongosh "C:\Users\meher\SU-CLASSES\SAAS_class\project\CPSC-5240-4240.Updated\HowToMongooseDB\createDB\createSampleData.js"
 
-//populate the DB server with sample data
-2. startdbClient.toDoSample2.cmd
->load ('createDB/createToDoSampleData.js');
->load ('createDB/createAdminUser.js');
->exit
+    run mongosh --port 3000 (shell to retrieve the data from db and check ) 
+    use tutorialPlatform
+    db.tutorials.find().pretty()
+    db.comments.find().pretty()
 
-//install npm packages
-3. npm install
+    run node AppServer.js and open localhost 8080 to see the webpage 
 
-//Compile Node/Express Server.  You may need to go to all subdirectories and compile the ts files.
-4. tsc AppServer.ts
+* Step 4: Compile and generate node/express server
+    > npx tsc AppServer.ts
 
-//Execute Node/Express server on port 8080
-5. node AppServer.js 
+* Step 5: Run node server on port 8080
+    > node AppServer.js
 
-To test server #3, try the following URL on the browser, while the server is running:
-* http://localhost:8080/
-* http://localhost:8080/app/list
-* http://localhost:8080/app/list/1
+Hifi Screen - Home Page
+> http://localhost:8080/
+
+Routes (To test in POSTMAN):
+Tutorial - GET all / POST
+> http://localhost:8080/app/tutorials
+
+Tutorial - GET by ID
+> http://localhost:8080/app/tutorials/{tutorialId}
+
+Comments - GET all / POST
+> http://localhost:8080/app/comments
+
+Comments - GET by ID
+> http://localhost:8080/app/comments/{commentID}
