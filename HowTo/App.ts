@@ -15,11 +15,9 @@ class App {
     this.expressApp = express();
     this.middleware();
 
-    // Instantiate models
     this.Tutorials = new TutorialModel(mongoDBConnection);
     this.Comments = new CommentModel(mongoDBConnection);
 
-    // Only register routes after models have connected
     Promise.all([
       this.Tutorials.createModel(),
       this.Comments.createModel()
@@ -30,7 +28,6 @@ class App {
     });
   }
 
-  // Configure Express middleware.
   private middleware(): void {
     this.expressApp.use(bodyParser.json());
     this.expressApp.use(bodyParser.urlencoded({ extended: false }));
