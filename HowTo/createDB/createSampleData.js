@@ -162,101 +162,78 @@ async function seed() {
     const commentList = [
       {
         commentId: 'comm001',
-        tutorialId: 'tut001',
+        noteId: 'tut001',
         userId: 'user001',
-        userName: 'TechEnthusiast',
-        content: 'Great tutorial! The step-by-step explanation made it easy to follow.',
-        createdDate: new Date('2025-01-20'),
-        isAmendment: false,
-        likes: 5,
-        parentCommentId: null
+        text: 'Great tutorial! The step-by-step explanation made it easy to follow.',
+        votesUp: 5,
+        votesDown: 0,
+        createdDate: new Date('2025-01-20')
       },
       {
         commentId: 'comm002',
-        tutorialId: 'tut001',
+        noteId: 'tut001',
         userId: 'user002',
-        userName: 'DataScientist42',
-        content: "I'm having trouble with step 3. Could you provide more details on the connection string format?",
-        createdDate: new Date('2025-01-21'),
-        isAmendment: false,
-        likes: 2,
-        parentCommentId: null
+        text: "I'm having trouble with step 3. Could you provide more details on the connection string format?",
+        votesUp: 2,
+        votesDown: 0,
+        createdDate: new Date('2025-01-21')
       },
       {
         commentId: 'comm003',
-        tutorialId: 'tut001',
+        noteId: 'tut001',
         userId: 'auth001',
-        userName: 'John Smith',
-        content: 'Sure! The connection string format is: mongodb://localhost:27017/yourDatabaseName',
-        createdDate: new Date('2025-01-21'),
-        isAmendment: false,
-        likes: 8,
-        parentCommentId: 'comm002'
+        text: 'Sure! The connection string format is: mongodb://localhost:27017/yourDatabaseName',
+        votesUp: 8,
+        votesDown: 0,
+        createdDate: new Date('2025-01-21')
       },
       {
         commentId: 'comm004',
-        tutorialId: 'tut001',
+        noteId: 'tut001',
         userId: 'user003',
-        userName: 'DevOpsNinja',
-        content: "I think there's a mistake in step 2. The command should be 'mongod --dbpath /path/to/data' to specify the data directory.",
-        createdDate: new Date('2025-01-22'),
-        isAmendment: true,
-        likes: 15,
-        parentCommentId: null,
-        amendmentDetails: {
-          stepNumber: 2,
-          proposedChange: "Start the MongoDB server using the mongod --dbpath /path/to/data command"
-        }
+        text: "I think there's a mistake in step 2. The command should be 'mongod --dbpath /path/to/data' to specify the data directory.",
+        votesUp: 15,
+        votesDown: 0,
+        createdDate: new Date('2025-01-22')
       },
       {
         commentId: 'comm005',
-        tutorialId: 'tut002',
+        noteId: 'tut002',
         userId: 'user004',
-        userName: 'BackendDev',
-        content: 'Excellent tutorial on Express! I found the authentication section particularly helpful.',
-        createdDate: new Date('2025-02-15'),
-        isAmendment: false,
-        likes: 7,
-        parentCommentId: null
+        text: 'Excellent tutorial on Express! I found the authentication section particularly helpful.',
+        votesUp: 7,
+        votesDown: 0,
+        createdDate: new Date('2025-02-15')
       },
       {
         commentId: 'comm006',
-        tutorialId: 'tut002',
+        noteId: 'tut002',
         userId: 'user005',
-        userName: 'CodeNewbie',
-        content: 'This tutorial really helped me understand RESTful APIs. Thanks!',
-        createdDate: new Date('2025-02-18'),
-        isAmendment: false,
-        likes: 4,
-        parentCommentId: null
+        text: 'This tutorial really helped me understand RESTful APIs. Thanks!',
+        votesUp: 4,
+        votesDown: 0,
+        createdDate: new Date('2025-02-18')
       },
       {
         commentId: 'comm007',
-        tutorialId: 'tut003',
+        noteId: 'tut003',
         userId: 'user006',
-        userName: 'ReactFan',
-        content: 'The explanation of useEffect was very clear. I finally understand how to handle side effects properly!',
-        createdDate: new Date('2025-03-12'),
-        isAmendment: false,
-        likes: 9,
-        parentCommentId: null
+        text: 'The explanation of useEffect was very clear. I finally understand how to handle side effects properly!',
+        votesUp: 9,
+        votesDown: 0,
+        createdDate: new Date('2025-03-12')
       },
       {
         commentId: 'comm008',
-        tutorialId: 'tut003',
+        noteId: 'tut003',
         userId: 'user007',
-        userName: 'FrontendExpert',
-        content: "I'd recommend adding a section on the useContext hook as well. It's quite important for state management.",
-        createdDate: new Date('2025-03-15'),
-        isAmendment: true,
-        likes: 12,
-        parentCommentId: null,
-        amendmentDetails: {
-          stepNumber: 5,
-          proposedChange: "Add a new step: 'Using the useContext Hook for state management across components'"
-        }
+        text: "I'd recommend adding a section on the useContext hook as well. It's quite important for state management.",
+        votesUp: 12,
+        votesDown: 0,
+        createdDate: new Date('2025-03-15')
       }
     ];
+    
 
     const comResult = await comments.insertMany(commentList);
     console.log(`Inserted ${comResult.insertedCount} comments`);
