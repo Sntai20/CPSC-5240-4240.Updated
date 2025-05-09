@@ -9,14 +9,7 @@
 
 Starting from the `HowTo` directory, setup and run the Mongo database.
 
-
 ### Start the MongoDB Database
-
-Navigate into the HowTo directory.
-
-```text
-cd HowTo
-```
 
 Select your operating system to start the MongoDB database:
 
@@ -24,6 +17,7 @@ Select your operating system to start the MongoDB database:
 <summary>Windows</summary>
 
 ```powershell
+cd HowTo
 # Run MongoDB database on Windows
 . ./startDbServer.cmd
 ```
@@ -34,6 +28,7 @@ Select your operating system to start the MongoDB database:
 <summary>Linux/Mac</summary>
 
 ```bash
+cd HowTo
 # Make the script executable and run MongoDB database on Linux/Mac
 chmod +x start.DbServer.sh
 ./start.DbServer.sh
@@ -121,3 +116,10 @@ Comments - GET all / POST
 
 Comments - GET by ID
 > http://localhost:8080/app/comments/{commentID}
+
+## Clean
+
+```bash
+rm -rf out
+rm -rf node_modules
+```
