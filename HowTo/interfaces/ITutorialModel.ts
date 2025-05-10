@@ -24,9 +24,6 @@ export interface ITutorial {
   published: boolean;
 }
 
-export interface ITutorialModel extends Mongoose.Document, ITutorial{
+export interface ITutorialModel extends Mongoose.Document, ITutorial {
 
 }
-
-  
- 
