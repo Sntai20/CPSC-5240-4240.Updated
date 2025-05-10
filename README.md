@@ -1,8 +1,7 @@
 # HowTo Website
 
-1. Setup and run the Mongo database.
-    1. Seed the database with the population data.
-1. Build and run the Backend API on port 8080.
+1. Run and seed the Mongo database with sample data.
+1. Build and run the Backend API.
 1. Test the API calls to the database.
 
 ## Database setup guide
@@ -94,7 +93,7 @@ npm install
 npx tsc
 
 # Run node server on port 8080
-node AppServer.js
+node start
 ```
 
 ## Test API Guide
