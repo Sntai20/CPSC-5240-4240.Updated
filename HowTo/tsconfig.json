@@ -1,32 +1,22 @@
-// {
-//   "compilerOptions": {
-//     "target": "es6",
-//     "module": "commonjs"
-//   },
-//   "include": [
-//     "**/*.ts"
-//   ],
-//   "exclude": [
-//     "node_modules"
-//   ]
-// }
 {
   "compilerOptions": {
     "module": "commonjs",
-    "lib": ["ES2015", "es2018", "dom", "ES6"],
+    "lib": ["es2018", "dom"],
     "target": "es6",
     "moduleResolution" : "node",
     "rootDir": "./",
+    "outDir": "./out",
     "sourceMap": true,
     "types":["node"],
     "typeRoots": [
       "node_modules/@types"
-    ],
+    ]
   },
-  "includes" : [
+  "include" : [
     "**/*"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "out"
   ]
 }
