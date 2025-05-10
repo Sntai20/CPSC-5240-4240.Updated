@@ -50,7 +50,7 @@ class TutorialModel {
 
     public async createModel() {
         try {
-            await Mongoose.connect(this.dbConnectionString, {});
+            await Mongoose.connect(this.dbConnectionString);
             this.model = Mongoose.model<ITutorialModel>("Tutorial", this.schema);
         }
         catch (e) {
