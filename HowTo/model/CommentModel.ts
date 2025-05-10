@@ -17,7 +17,12 @@ class CommentModel {
       {
         commentId:        { type: String, required: true },
         noteId:           { type: String, required: true },
+        noteId:           { type: String, required: true },
         userId:           { type: String, required: true },
+        text:             { type: String, required: true },
+        votesUp:          { type: Number, default: 0 },
+        votesDown:        { type: Number, default: 0 },
+        createdDate:      { type: Date,   default: Date.now }
         text:             { type: String, required: true },
         votesUp:          { type: Number, default: 0 },
         votesDown:        { type: Number, default: 0 },
@@ -40,6 +45,7 @@ class CommentModel {
   }
 
   //GET all comments
+  //GET all comments
   public async retrieveAll(response: any): Promise<void> {
     try {
       const docs = await this.model.find().sort({ createdDate: -1 }).exec();
@@ -50,6 +56,7 @@ class CommentModel {
     }
   }
 
+  //GET comment by ID
   //GET comment by ID
   public async retrieveByID(response: any, commentId: string): Promise<void> {
     try {
@@ -65,6 +72,11 @@ class CommentModel {
     }
   }
 
+  //POST new comment
+  public async createComment(
+    response: any,
+    data: ICommentModel
+  ): Promise<void> {
   //POST new comment
   public async createComment(
     response: any,
