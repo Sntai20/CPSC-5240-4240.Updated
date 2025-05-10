@@ -93,7 +93,7 @@ npm install
 npx tsc
 
 # Run node server on port 8080
-node start
+node out/AppServer.js
 ```
 
 ## Test API Guide
