@@ -89,11 +89,11 @@ cd HowTo
 # Install the npm packages
 npm install
 
-# Compile the node server
-npx tsc
+# Compile the node server and copy the pages to out/pages
+npm run build
 
 # Run node server on port 8080
-node out/AppServer.js
+npm run start
 ```
 
 ## Test API Guide

@@ -18,12 +18,14 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node out/AppServer.js",
-    "build": "tsc"
+    "build": "tsc && npm run copy-pages",
+    "copy-pages": "copyfiles -u 1 pages/**/* out/pages"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@types/express": "^5.0.1",
-    "@types/serve-static": "^1.15.7"
+    "@types/serve-static": "^1.15.7",
+    "copyfiles": "^2.4.1"
   }
 }
