@@ -1,5 +1,5 @@
 import * as dotenv from 'dotenv';
-import {App} from './App';
+import { App } from './App';
 
 dotenv.config();
 
@@ -9,7 +9,7 @@ const dbPassword = process.env.DB_PASSWORD;
 let mongoDBConnection = 'mongodb://' + process.env.DB_INFO;
 if (dbUser && dbPassword) {
     mongoDBConnection = 'mongodb://' + dbUser + ':' + encodeURIComponent(dbPassword) + '@' + process.env.DB_INFO;
-} 
+}
 console.log("server db connection URL " + mongoDBConnection);
 
 let server: any = new App(mongoDBConnection).expressApp;

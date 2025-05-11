@@ -24,11 +24,11 @@ async function seed() {
     const db = client.db('tutorialPlatform');
 
     // Ensure collections existance
-    await db.createCollection('tutorials').catch(() => {});
-    await db.createCollection('comments').catch(() => {});
+    await db.createCollection('tutorials').catch(() => { });
+    await db.createCollection('comments').catch(() => { });
 
     const tutorials = db.collection('tutorials');
-    const comments  = db.collection('comments');
+    const comments = db.collection('comments');
 
     // Clear data
     await tutorials.deleteMany({});
@@ -233,7 +233,7 @@ async function seed() {
         createdDate: new Date('2025-03-15')
       }
     ];
-    
+
 
     const comResult = await comments.insertMany(commentList);
     console.log(`Inserted ${comResult.insertedCount} comments`);

@@ -15,13 +15,13 @@ class CommentModel {
   public createSchema(): void {
     this.schema = new Mongoose.Schema(
       {
-        commentId:        { type: String, required: true },
-        noteId:           { type: String, required: true },
-        userId:           { type: String, required: true },
-        text:             { type: String, required: true },
-        votesUp:          { type: Number, default: 0 },
-        votesDown:        { type: Number, default: 0 },
-        createdDate:      { type: Date,   default: Date.now }
+        commentId: { type: String, required: true },
+        noteId: { type: String, required: true },
+        userId: { type: String, required: true },
+        text: { type: String, required: true },
+        votesUp: { type: Number, default: 0 },
+        votesDown: { type: Number, default: 0 },
+        createdDate: { type: Date, default: Date.now }
       },
       { collection: "comments" }
     );
@@ -29,10 +29,7 @@ class CommentModel {
 
   public async createModel(): Promise<void> {
     try {
-      await Mongoose.connect(this.dbConnectionString, {
-        useNewUrlParser:    true,
-        useUnifiedTopology: true
-      });
+      await Mongoose.connect(this.dbConnectionString);
       this.model = Mongoose.model<ICommentModel & Mongoose.Document>(
         "Comment",
         this.schema
@@ -75,7 +72,7 @@ class CommentModel {
   ): Promise<void> {
     try {
       const newComment = new this.model(data);
-      const result     = await newComment.save();
+      const result = await newComment.save();
       response.status(201).json(result);
     } catch (e) {
       console.error(e);
