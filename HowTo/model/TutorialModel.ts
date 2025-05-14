@@ -1,5 +1,5 @@
 import * as Mongoose from "mongoose";
-import {ITutorialModel} from '../interfaces/ITutorialModel';
+import { ITutorialModel } from '../interfaces/ITutorialModel';
 
 class TutorialModel {
     public schema: any;
@@ -39,8 +39,8 @@ class TutorialModel {
                 dislikes: { type: Number, default: 0 },
                 steps: [this.stepsSchema],
                 published: { type: Boolean, default: false }
-            }, 
-            { 
+            },
+            {
                 collection: 'tutorials',
                 timestamps: { createdAt: 'createdDate', updatedAt: 'updatedDate' }
             }
@@ -50,11 +50,11 @@ class TutorialModel {
 
     public async createModel() {
         try {
-            await Mongoose.connect(this.dbConnectionString, {useNewUrlParser: true, useUnifiedTopology: true});
-            this.model = Mongoose.model<ITutorialModel>("Tutorial", this.schema);    
+            await Mongoose.connect(this.dbConnectionString);
+            this.model = Mongoose.model<ITutorialModel>("Tutorial", this.schema);
         }
         catch (e) {
-            console.error(e);        
+            console.error(e);
         }
     }
 
@@ -71,7 +71,7 @@ class TutorialModel {
     }
 
     public async retrieveTutorial(response: any, tutorialId: string) {
-        var query = this.model.findOne({tutorialId: tutorialId});
+        var query = this.model.findOne({ tutorialId: tutorialId });
         try {
             const tutorial = await query.exec();
             if (tutorial) {
@@ -102,4 +102,4 @@ class TutorialModel {
     }
 }
 
-export {TutorialModel};
+export { TutorialModel };

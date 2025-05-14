@@ -15,19 +15,13 @@ class CommentModel {
   public createSchema(): void {
     this.schema = new Mongoose.Schema(
       {
-        commentId:        { type: String, required: true },
-        tutorialId:       { type: String, required: true },
-        userId:           { type: String, required: true },
-        userName:         { type: String, required: true },
-        content:          { type: String, required: true },
-        createdDate:      { type: Date,   default: Date.now },
-        isAmendment:      { type: Boolean, default: false },
-        amendmentDetails: {
-          stepNumber:     { type: Number },
-          proposedChange: { type: String },
-        },
-        likes:            { type: Number, default: 0 },
-        parentCommentId:  { type: String, default: null },
+        commentId: { type: String, required: true },
+        noteId: { type: String, required: true },
+        userId: { type: String, required: true },
+        text: { type: String, required: true },
+        votesUp: { type: Number, default: 0 },
+        votesDown: { type: Number, default: 0 },
+        createdDate: { type: Date, default: Date.now }
       },
       { collection: "comments" }
     );
@@ -35,10 +29,7 @@ class CommentModel {
 
   public async createModel(): Promise<void> {
     try {
-      await Mongoose.connect(this.dbConnectionString, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-      });
+      await Mongoose.connect(this.dbConnectionString);
       this.model = Mongoose.model<ICommentModel & Mongoose.Document>(
         "Comment",
         this.schema
@@ -48,7 +39,7 @@ class CommentModel {
     }
   }
 
-  /** Retrieve all comments, newest first */
+  //GET all comments
   public async retrieveAll(response: any): Promise<void> {
     try {
       const docs = await this.model.find().sort({ createdDate: -1 }).exec();
@@ -59,7 +50,7 @@ class CommentModel {
     }
   }
 
-  /** Retrieve one comment by its commentId */
+  //GET comment by ID
   public async retrieveByID(response: any, commentId: string): Promise<void> {
     try {
       const doc = await this.model.findOne({ commentId }).exec();
@@ -74,11 +65,14 @@ class CommentModel {
     }
   }
 
-  /** Create a new comment */
-  public async createComment(response: any, data: ICommentModel): Promise<void> {
+  //POST new comment
+  public async createComment(
+    response: any,
+    data: ICommentModel
+  ): Promise<void> {
     try {
       const newComment = new this.model(data);
-      const result     = await newComment.save();
+      const result = await newComment.save();
       response.status(201).json(result);
     } catch (e) {
       console.error(e);
