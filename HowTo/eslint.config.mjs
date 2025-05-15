@@ -1,19 +1,28 @@
-import eslint from '@eslint/js';
-import tseslint from 'typescript-eslint';
+import tsEslintPlugin from '@typescript-eslint/eslint-plugin';
+import tsParser from '@typescript-eslint/parser';
 
-export default tseslint.config(
+export default [
     {
         ignores: ['**/out/**', '**/dist/**', 'createDB/createAdminUser.js'],
     },
-    eslint.configs.recommended,
-    tseslint.configs.recommended,
     {
+        files: ['**/*.ts'],
+        languageOptions: {
+            parser: tsParser,
+            parserOptions: {
+                ecmaVersion: 'latest',
+                sourceType: 'module',
+            },
+        },
+        plugins: {
+            '@typescript-eslint': tsEslintPlugin,
+        },
         rules: {
+            ...tsEslintPlugin.configs.recommended.rules,
             '@typescript-eslint/no-explicit-any': ['warn'],
             'prefer-const': ['warn'],
             'no-console': ['warn'],
-            'no-undef': ['warn'],
             'no-var': ['warn'],
         },
-    }
-);
+    },
+];
