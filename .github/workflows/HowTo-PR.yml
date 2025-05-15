@@ -33,4 +33,4 @@ jobs:
 
       - name: Lint code
         working-directory: ${{ env.WORKING_DIRECTORY }}
-        run: npx eslint . --ext .ts
+        run: npx eslint --config eslint.config.mjs . --ext .ts
