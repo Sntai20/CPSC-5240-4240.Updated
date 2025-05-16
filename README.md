@@ -6,7 +6,7 @@
 
 ## Database setup guide
 
-Starting from the `HowTo` directory, setup and run the Mongo database.
+Starting from the `src` directory, setup and run the Mongo database.
 
 ### Start the MongoDB Database
 
@@ -16,7 +16,7 @@ Select your operating system to start the MongoDB database:
 <summary>Windows</summary>
 
 ```powershell
-cd HowTo
+cd src
 # Run MongoDB database on Windows
 . ./startDbServer.cmd
 ```
@@ -27,7 +27,7 @@ cd HowTo
 <summary>Linux/Mac</summary>
 
 ```bash
-cd HowTo
+cd src
 # Make the script executable and run MongoDB database on Linux/Mac
 chmod +x start.DbServer.sh
 ./start.DbServer.sh
@@ -45,7 +45,7 @@ Select your operating system to start the MongoDB client:
 <summary>Windows</summary>
 
 ```powershell
-cd HowTo
+cd src
 # Run database client on Windows
 . ./startDbClient.admin.cmd
 ```
@@ -56,7 +56,7 @@ cd HowTo
 <summary>Linux/Mac</summary>
 
 ```bash
-cd HowTo
+cd src
 # Run database client on Linux/Mac
 mongo --port 3000 --authenticationDatabase admin
 ```
@@ -81,10 +81,10 @@ exit
 
 ## Backend API build and run
 
-Starting from the `HowTo` directory, install npm packages, compile the node server, and run the node server.
+Starting from the `src` directory, install npm packages, compile the node server, and run the node server.
 
 ```bash
-cd HowTo
+cd src
 
 # Install the npm packages
 npm install
