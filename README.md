@@ -104,13 +104,13 @@ Hifi Screen - [Home Page](http://localhost:8080/)
 
 ### Routes (To test in POSTMAN)
 
-Tutorial - [GET all / POST](http://localhost:8080/app/tutorials) `/app/tutorial`
+Tutorial - [GET all / POST](http://localhost:8080/app/tutorials) - `/app/tutorials`
 
-Tutorial - [GET by Id](http://localhost:8080/app/tutorials/{tutorialId}) `/app/tutorials/{tutorialId}`
+Tutorial - [GET by Id](http://localhost:8080/app/tutorials/{tutorialId}) - `/app/tutorials/{tutorialId}`
 
-Comments - [GET all / POST](http://localhost:8080/app/comments) `/app/comments`
+Comments - [GET all / POST](http://localhost:8080/app/comments) - `/app/comments`
 
-Comments - [GET by Id](http://localhost:8080/app/comments/{commentId}) `/app/comments/{commentId}`
+Comments - [GET by Id](http://localhost:8080/app/comments/{commentId}) - `/app/comments/{commentId}`
 
 ## Clean
 
