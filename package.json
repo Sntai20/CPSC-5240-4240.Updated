@@ -19,7 +19,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node out/AppServer.js",
     "build": "tsc && npm run copy-pages",
-    "copy-pages": "copyfiles -u 1 pages/**/* out/pages"
+    "copy-pages": "copyfiles -u 1 src/pages/**/* out/pages"
   },
   "author": "",
   "license": "ISC",

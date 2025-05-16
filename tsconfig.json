@@ -13,10 +13,11 @@
     ]
   },
   "include" : [
-    "**/*"
+    "**/*",
+    "./out"
   ],
   "exclude": [
     "node_modules",
-    "out"
+    "./out"
   ]
 }
