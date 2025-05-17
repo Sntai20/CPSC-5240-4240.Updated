@@ -20,7 +20,6 @@ export default [
         rules: {
             ...tsEslintPlugin.configs.recommended.rules,
             '@typescript-eslint/no-explicit-any': ['warn'],
-            '@typescript-eslint/no-unused-expressions': ['warn'],
             'prefer-const': ['warn'],
             'no-console': ['warn'],
             'no-var': ['warn'],

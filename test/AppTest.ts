@@ -60,6 +60,6 @@ describe('App', () => {
         new AppPatched('mongodb://test');
         await new Promise(res => setTimeout(res, 10));
         // Should register router and static middleware
-        expect(useSpy.calledWith('/', sinon.match.any)).to.be.true;
+        expect(useSpy.calledWith('/', sinon.match.any)).to.equal(true);
     });
 });
