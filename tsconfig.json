@@ -13,11 +13,12 @@
     ]
   },
   "include" : [
-    "**/*",
-    "./out"
+    "./src/**/*",
+    "./test/**/*",
   ],
   "exclude": [
     "node_modules",
-    "./out"
+    "./out",
+    "References",
   ]
 }
