@@ -2,7 +2,7 @@
   "name": "expressmongoserver",
   "version": "1.0.0",
   "description": "This directory contains two express servers: * AppServer.js - Combined Node/Express web server w/ Mongo Access * Server.js - Encapsulated Node/Express web server w/ Mongo Access",
-  "main": "out/AppServer.js",
+  "main": "out/src/AppServer.js",
   "dependencies": {
     "@types/body-parser": "^1.19.2",
     "@types/dotenv": "^6.1.1",
@@ -17,9 +17,9 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node out/AppServer.js",
+    "start": "node out/src/AppServer.js",
     "build": "tsc && npm run copy-pages",
-    "copy-pages": "copyfiles -u 1 src/pages/**/* out/pages"
+    "copy-pages": "copyfiles -u 1 src/pages/**/* out/src/pages"
   },
   "author": "",
   "license": "ISC",
