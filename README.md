@@ -118,3 +118,31 @@ Comments - [GET by Id](http://localhost:8080/app/comments/{commentId}) - `/app/c
 rm -rf out
 rm -rf node_modules
 ```
+
+## Project Structure
+
+The HowTo project uses a standard Node.js project structure for a REST API. Since there is only one project, the project root is also the repository root.
+
+```text
+project-root/
+├── node_modules/
+├── out/
+├── src/
+│   ├── controllers/
+│       ├── example.controller.ts
+│   ├── models/
+│       ├── example.model.ts
+│   ├── routes/
+│       ├── example.route.ts
+│   ├── services/
+│       ├── example.service.ts
+│   ├── app.ts
+│   └── server.ts
+├── test/
+│   ├── unit/
+│   └── integration/
+├── package.json
+├── tsconfig.json
+├── .gitignore
+└── README.md
+```
