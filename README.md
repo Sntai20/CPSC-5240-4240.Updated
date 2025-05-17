@@ -26,7 +26,6 @@ Select your operating system to start the MongoDB database:
 <summary>Linux/Mac</summary>
 
 ```bash
-cd src
 # Make the script executable and run MongoDB database on Linux/Mac
 chmod +x start.DbServer.sh
 ./start.DbServer.sh
