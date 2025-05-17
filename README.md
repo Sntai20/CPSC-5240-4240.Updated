@@ -109,8 +109,7 @@ Comments - [GET by Id](http://localhost:8080/app/comments/{commentId}) - `/app/c
 ## Clean
 
 ```bash
-rm -rf out
-rm -rf node_modules
+npm run clean
 ```
 
 ## Project Structure
