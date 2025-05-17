@@ -1,9 +1,8 @@
 import { expect } from 'chai';
 import * as sinon from 'sinon';
 import * as express from 'express';
-import * as bodyParser from 'body-parser';
-import * as crypto from 'crypto';
 import { App } from '../src/App';
+// eslint-disable-next-line @typescript-eslint/no-require-imports
 const proxyquire = require('proxyquire').noCallThru();
 
 // Mock TutorialModel and CommentModel
