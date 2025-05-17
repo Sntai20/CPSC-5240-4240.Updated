@@ -6,7 +6,7 @@
 
 ## Database setup guide
 
-Starting from the `src` directory, setup and run the Mongo database.
+Starting from the `repository root` directory, setup and run the Mongo database.
 
 ### Start the MongoDB Database
 
@@ -16,7 +16,6 @@ Select your operating system to start the MongoDB database:
 <summary>Windows</summary>
 
 ```powershell
-cd src
 # Run MongoDB database on Windows
 . ./startDbServer.cmd
 ```
@@ -45,7 +44,6 @@ Select your operating system to start the MongoDB client:
 <summary>Windows</summary>
 
 ```powershell
-cd src
 # Run database client on Windows
 . ./startDbClient.admin.cmd
 ```
@@ -56,7 +54,6 @@ cd src
 <summary>Linux/Mac</summary>
 
 ```bash
-cd src
 # Run database client on Linux/Mac
 mongo --port 3000 --authenticationDatabase admin
 ```
@@ -66,7 +63,7 @@ mongo --port 3000 --authenticationDatabase admin
 Once connected to the database, run the following commands to populate the demo data.
 
 ```bash
-load ('createDB/createSampleData.js');
+load ('src/createDB/createSampleData.js');
 
 show dbs
 use tutorialPlatform
@@ -74,22 +71,20 @@ show collections
 db.tutorials.find()
 db.comments.find()
 
-load ('createDB/createAdminUser.js');
+load ('src/createDB/createAdminUser.js');
 show users
 exit
 ```
 
 ## Backend API build and run
 
-Starting from the `src` directory, install npm packages, compile the node server, and run the node server.
+Starting from the `repository root` directory, install npm packages, compile the node server, and run the node server.
 
 ```bash
-cd src
-
 # Install the npm packages
 npm install
 
-# Compile the node server and copy the pages to out/pages
+# Compile the node server and copy the pages to out/src/pages
 npm run build
 
 # Run node server on port 8080
