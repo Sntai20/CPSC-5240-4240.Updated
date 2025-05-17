@@ -68,9 +68,8 @@ class App {
 
     // Static file routes
     this.expressApp.use('/', router);
-    this.expressApp.use('/images', express.static(__dirname + '/img'));
     this.expressApp.use('/', express.static(__dirname + '/pages'));
-    this.expressApp.use('/tutorial', express.static(__dirname + '/pages/tutorial'));
+    // this.expressApp.use('/tutorial', express.static(__dirname + '/pages/tutorial'));
   }
 }
 
