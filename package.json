@@ -18,8 +18,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node out/src/AppServer.js",
-    "build": "rm -rf out/src/pages && tsc && npm run copy-pages",
-    "copy-pages": "copyfiles -u 2 src/pages/**/* out/src/pages"
+    "build": "rimraf out/src/pages && tsc && npm run copy-pages",
+    "copy-pages": "copyfiles -u 2 src/pages/**/* out/src/pages",
+    "clean": "rimraf out node_modules"
   },
   "author": "",
   "license": "ISC",
@@ -30,6 +31,7 @@
     "@typescript-eslint/parser": "^8.32.1",
     "copyfiles": "^2.4.1",
     "eslint": "^9.26.0",
+    "rimraf": "^6.0.1",
     "typescript-eslint": "^8.32.1"
   }
 }
