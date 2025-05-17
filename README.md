@@ -120,7 +120,11 @@ The HowTo project uses a standard Node.js project structure for a REST API. Sinc
 ```text
 project-root/
 ├── node_modules/
-├── out/
+├── out/ (The compiled server runs from the out directory.)
+│   ├── src/
+│       ├── pages/
+│       ├── App.js
+│       ├── AppServer.js
 ├── src/
 │   ├── controllers/
 │       ├── example.controller.ts
