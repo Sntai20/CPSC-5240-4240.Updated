@@ -50,12 +50,14 @@ describe('App', () => {
     });
 
     it('should set up middleware', () => {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const useSpy = sandbox.spy((express as any).application, 'use');
         new AppPatched('mongodb://test');
         expect(useSpy.callCount).to.be.greaterThan(0);
     });
 
     it('should register routes after models are created', async () => {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const useSpy = sandbox.spy((express as any).application, 'use');
         new AppPatched('mongodb://test');
         await new Promise(res => setTimeout(res, 10));
