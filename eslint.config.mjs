@@ -21,7 +21,6 @@ export default [
             ...tsEslintPlugin.configs.recommended.rules,
             '@typescript-eslint/no-explicit-any': ['warn'],
             '@typescript-eslint/no-unused-expressions': ['warn'],
-            '@typescript-eslint/no-unused-vars': ['warn'],
             'prefer-const': ['warn'],
             'no-console': ['warn'],
             'no-var': ['warn'],

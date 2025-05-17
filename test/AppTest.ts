@@ -51,7 +51,7 @@ describe('App', () => {
 
     it('should set up middleware', () => {
         const useSpy = sandbox.spy((express as any).application, 'use');
-        const app = new AppPatched('mongodb://test');
+        new AppPatched('mongodb://test');
         expect(useSpy.callCount).to.be.greaterThan(0);
     });
 
