@@ -15,8 +15,9 @@ Select your operating system to start the MongoDB database:
 <details>
 <summary>Windows</summary>
 
+Run MongoDB database on Windows.
+
 ```powershell
-# Run MongoDB database on Windows
 . ./startDbServer.cmd
 ```
 
@@ -25,8 +26,9 @@ Select your operating system to start the MongoDB database:
 <details>
 <summary>Linux/Mac</summary>
 
+Make the script executable and run MongoDB database on Linux/Mac.
+
 ```bash
-# Make the script executable and run MongoDB database on Linux/Mac
 chmod +x start.DbServer.sh
 ./start.DbServer.sh
 ```
@@ -42,8 +44,9 @@ Select your operating system to start the MongoDB client:
 <details>
 <summary>Windows</summary>
 
+Run the database client on Windows.
+
 ```powershell
-# Run database client on Windows
 . ./startDbClient.admin.cmd
 ```
 
@@ -52,8 +55,9 @@ Select your operating system to start the MongoDB client:
 <details>
 <summary>Linux/Mac</summary>
 
+Run the database client on Linux/Mac.
+
 ```bash
-# Run database client on Linux/Mac
 mongo --port 3000 --authenticationDatabase admin
 ```
 
@@ -75,18 +79,33 @@ show users
 exit
 ```
 
-## Backend API build and run
+## Backend API
 
-Starting from the `repository root` directory, install npm packages, compile the node server, and run the node server.
+Starting from the `repository root` directory, install npm packages, compile the node server, run the unit tests, and run the node server.
+
+### Build
+
+The following commands installs the npm packages, then compiles the node server and copy the pages to out/src/pages.
 
 ```bash
-# Install the npm packages
 npm install
 
-# Compile the node server and copy the pages to out/src/pages
 npm run build
+```
 
-# Run node server on port 8080
+### Run Unit Test
+
+To run the unit tests, this step assumes the npm packages were installed using `npm install` in the previous step.
+
+```bash
+npm test
+```
+
+### Run the Server
+
+The following command runs the node server on port 8080.
+
+```bash
 npm run start
 ```
 
@@ -107,6 +126,8 @@ Comments - [GET all / POST](http://localhost:8080/app/comments) - `/app/comments
 Comments - [GET by Id](http://localhost:8080/app/comments/{commentId}) - `/app/comments/{commentId}`
 
 ## Clean
+
+The following command removes the database files, the node_modules directory, and the compiled node server.
 
 ```bash
 npm run clean
