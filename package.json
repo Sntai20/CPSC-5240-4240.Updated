@@ -18,7 +18,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node out/src/AppServer.js",
-    "build": "tsc && npm run copy-pages",
+    "build": "rm -rf out/src/pages && tsc && npm run copy-pages",
     "copy-pages": "copyfiles -u 1 src/pages/**/* out/src/pages"
   },
   "author": "",
