@@ -154,8 +154,8 @@ project-root/
 │       ├── example.route.ts
 │   ├── services/
 │       ├── example.service.ts
-│   ├── app.ts
-│   └── server.ts
+│   ├── App.ts
+│   └── AppServer.ts
 ├── test/
 │   ├── unit/
 │   └── integration/
