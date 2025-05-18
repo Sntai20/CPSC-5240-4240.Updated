@@ -6,7 +6,7 @@
 
 ## Database setup guide
 
-Starting from the `HowTo` directory, setup and run the Mongo database.
+Starting from the `repository root` directory, setup and run the Mongo database.
 
 ### Start the MongoDB Database
 
@@ -15,9 +15,9 @@ Select your operating system to start the MongoDB database:
 <details>
 <summary>Windows</summary>
 
+Run MongoDB database on Windows.
+
 ```powershell
-cd HowTo
-# Run MongoDB database on Windows
 . ./startDbServer.cmd
 ```
 
@@ -26,9 +26,9 @@ cd HowTo
 <details>
 <summary>Linux/Mac</summary>
 
+Make the script executable and run MongoDB database on Linux/Mac.
+
 ```bash
-cd HowTo
-# Make the script executable and run MongoDB database on Linux/Mac
 chmod +x start.DbServer.sh
 ./start.DbServer.sh
 ```
@@ -44,9 +44,9 @@ Select your operating system to start the MongoDB client:
 <details>
 <summary>Windows</summary>
 
+Run the database client on Windows.
+
 ```powershell
-cd HowTo
-# Run database client on Windows
 . ./startDbClient.admin.cmd
 ```
 
@@ -55,9 +55,9 @@ cd HowTo
 <details>
 <summary>Linux/Mac</summary>
 
+Run the database client on Linux/Mac.
+
 ```bash
-cd HowTo
-# Run database client on Linux/Mac
 mongo --port 3000 --authenticationDatabase admin
 ```
 
@@ -66,7 +66,7 @@ mongo --port 3000 --authenticationDatabase admin
 Once connected to the database, run the following commands to populate the demo data.
 
 ```bash
-load ('createDB/createSampleData.js');
+load ('src/createDB/createSampleData.js');
 
 show dbs
 use tutorialPlatform
@@ -74,25 +74,38 @@ show collections
 db.tutorials.find()
 db.comments.find()
 
-load ('createDB/createAdminUser.js');
+load ('src/createDB/createAdminUser.js');
 show users
 exit
 ```
 
-## Backend API build and run
+## Backend API
 
-Starting from the `HowTo` directory, install npm packages, compile the node server, and run the node server.
+Starting from the `repository root` directory, install npm packages, compile the node server, run the unit tests, and run the node server.
+
+### Build
+
+The following commands installs the npm packages, then compiles the node server and copy the pages to out/src/pages.
 
 ```bash
-cd HowTo
-
-# Install the npm packages
 npm install
 
-# Compile the node server and copy the pages to out/pages
 npm run build
+```
 
-# Run node server on port 8080
+### Run Unit Test
+
+To run the unit tests, this step assumes the npm packages were installed using `npm install` in the previous step.
+
+```bash
+npm test
+```
+
+### Run the Server
+
+The following command runs the node server on port 8080.
+
+```bash
 npm run start
 ```
 
@@ -104,17 +117,50 @@ Hifi Screen - [Home Page](http://localhost:8080/)
 
 ### Routes (To test in POSTMAN)
 
-Tutorial - [GET all / POST](http://localhost:8080/app/tutorials) `/app/tutorial`
+Tutorial - [GET all / POST](http://localhost:8080/app/tutorials) - `/app/tutorials`
 
-Tutorial - [GET by Id](http://localhost:8080/app/tutorials/{tutorialId}) `/app/tutorials/{tutorialId}`
+Tutorial - [GET by Id](http://localhost:8080/app/tutorials/{tutorialId}) - `/app/tutorials/{tutorialId}`
 
-Comments - [GET all / POST](http://localhost:8080/app/comments) `/app/comments`
+Comments - [GET all / POST](http://localhost:8080/app/comments) - `/app/comments`
 
-Comments - [GET by Id](http://localhost:8080/app/comments/{commentId}) `/app/comments/{commentId}`
+Comments - [GET by Id](http://localhost:8080/app/comments/{commentId}) - `/app/comments/{commentId}`
 
 ## Clean
 
+The following command removes the database files, the node_modules directory, and the compiled node server.
+
 ```bash
-rm -rf out
-rm -rf node_modules
+npm run clean
+```
+
+## Project Structure
+
+The HowTo project uses a standard Node.js project structure for a REST API. Since there is only one project, the project root is also the repository root.
+
+```text
+project-root/
+├── node_modules/
+├── out/ (The compiled server runs from the out directory.)
+│   ├── src/
+│       ├── pages/
+│       ├── App.js
+│       ├── AppServer.js
+├── src/
+│   ├── controllers/
+│       ├── example.controller.ts
+│   ├── model/
+│       ├── example.model.ts
+│   ├── routes/
+│       ├── example.route.ts
+│   ├── services/
+│       ├── example.service.ts
+│   ├── App.ts
+│   └── AppServer.ts
+├── test/
+│   ├── unit/
+│   └── integration/
+├── package.json
+├── tsconfig.json
+├── .gitignore
+└── README.md
 ```
