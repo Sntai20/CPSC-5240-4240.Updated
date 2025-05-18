@@ -6,7 +6,7 @@ export default [
         ignores: ['**/out/**', '**/References/**','**/dist/**', 'src/createDB/createAdminUser.js'],
     },
     {
-        files: ['**/*.test.ts'],
+        files: ['**/*.ts'],
         languageOptions: {
             parser: tsParser,
             parserOptions: {
