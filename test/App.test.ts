@@ -1,6 +1,7 @@
 import { expect } from 'chai';
 import * as sinon from 'sinon';
 import * as supertest from 'supertest';
+// eslint-disable-next-line @typescript-eslint/no-require-imports
 const proxyquire = require('proxyquire').noCallThru();
 
 // Mock TutorialModel and CommentModel
