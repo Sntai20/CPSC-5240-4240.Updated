@@ -8,13 +8,23 @@ const proxyquire = require('proxyquire').noCallThru();
 class TutorialModelMock {
     createModel = sinon.stub().resolves();
     retrieveAllTutorials = sinon.stub().callsFake((res) => res.json([{ tutorialId: '1', title: 'Test' }]));
-    retrieveTutorial = sinon.stub().callsFake((res, id) => res.json({ tutorialId: id, title: 'Test' }));
+    retrieveTutorial = sinon.stub().callsFake((res, id) => {
+        if (id === '999') {
+            return res.status(404).end();
+        }
+        return res.json({ tutorialId: id, title: 'Test' });
+    });
     createTutorial = sinon.stub().callsFake((res, obj) => res.status(201).json(obj));
 }
 class CommentModelMock {
     createModel = sinon.stub().resolves();
     retrieveAll = sinon.stub().callsFake((res) => res.json([{ id: '1', text: 'Comment' }]));
-    retrieveByID = sinon.stub().callsFake((res, id) => res.json({ id, text: 'Comment' }));
+    retrieveByID = sinon.stub().callsFake((res, id) => {
+        if (id === '999') {
+            return res.status(404).end();
+        }
+        return res.json({ id, text: 'Comment' });
+    });
     createComment = sinon.stub().callsFake((res, obj) => res.status(201).json(obj));
 }
 
@@ -49,6 +59,11 @@ describe('App', () => {
             expect(res.body[0]).to.have.property('tutorialId');
         });
 
+        it('GET /app/tutorials/:tutorialId should return 404 for non-existing tutorial', async () => {
+            const res = await request.get('/app/tutorials/999');
+            expect(res.status).to.equal(404);
+        });
+
         it('POST /app/tutorials should create a tutorial', async () => {
             const res = await request.post('/app/tutorials').send({ title: 'New Tutorial' });
             expect(res.status).to.equal(201);
@@ -71,7 +86,10 @@ describe('App', () => {
             expect(res.body[0]).to.have.property('id');
         });
 
-        
+        it('GET /app/comments/:id should return 404 for non-existing comment', async () => {
+            const res = await request.get('/app/comments/999');
+            expect(res.status).to.equal(404);
+        });
 
         it('POST /app/comments should create a comment', async () => {
             const res = await request.post('/app/comments').send({ text: 'Hello' });
