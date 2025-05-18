@@ -16,7 +16,7 @@
     "typescript": "^5.2.2"
   },
   "scripts": {
-    "test": "mocha -r ts-node/register test/**/*.ts",
+    "test": "mocha -r ts-node/register test/**/*.test.ts",
     "start": "node out/src/AppServer.js",
     "build": "rimraf out/src/pages && tsc && npm run copy-pages",
     "copy-pages": "copyfiles -u 2 src/pages/**/* out/src/pages",
