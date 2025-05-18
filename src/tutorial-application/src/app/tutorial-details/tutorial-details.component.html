@@ -1,0 +1,21 @@
+<div class="container my-4" *ngIf="tutorial">
+  <div class="card shadow">
+    <div class="card-body">
+      <h2 class="card-title">{{ tutorial.title }}</h2>
+      <h5 class="text-muted mb-3">{{ tutorial.category }}</h5>
+
+      <p class="mb-2"><strong>Description:</strong> {{ tutorial.description }}</p>
+      <p><strong>Author:</strong> {{ tutorial.authorName }}</p>
+      <p><strong>Views:</strong> {{ tutorial.views }} | <strong>Likes:</strong> {{ tutorial.likes }} | <strong>Dislikes:</strong> {{ tutorial.dislikes }}</p>
+
+      <h5 class="mt-4">Steps:</h5>
+      <ol>
+        <li *ngFor="let step of tutorial.steps">
+          {{ step.stepNumber }}. {{ step.description }}
+        </li>
+      </ol>
+
+      <button class="btn btn-secondary mt-3" (click)="goBack()">Back</button>
+    </div>
+  </div>
+</div>
