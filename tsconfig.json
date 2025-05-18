@@ -7,16 +7,18 @@
     "rootDir": "./",
     "outDir": "./out",
     "sourceMap": true,
-    "types":["node"],
+    "types":["node", "mocha"],
     "typeRoots": [
       "node_modules/@types"
     ]
   },
   "include" : [
-    "**/*"
+    "./src/**/*",
+    "./test/**/*",
   ],
   "exclude": [
     "node_modules",
-    "out"
+    "./out",
+    "References",
   ]
 }

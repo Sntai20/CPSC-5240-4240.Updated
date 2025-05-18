@@ -59,7 +59,7 @@ class TutorialModel {
     }
 
     public async retrieveAllTutorials(response: any) {
-        var query = this.model.find({ published: true });
+        const query = this.model.find({ published: true });
         try {
             const itemArray = await query.exec();
             response.json(itemArray);
@@ -71,7 +71,7 @@ class TutorialModel {
     }
 
     public async retrieveTutorial(response: any, tutorialId: string) {
-        var query = this.model.findOne({ tutorialId: tutorialId });
+        const query = this.model.findOne({ tutorialId: tutorialId });
         try {
             const tutorial = await query.exec();
             if (tutorial) {

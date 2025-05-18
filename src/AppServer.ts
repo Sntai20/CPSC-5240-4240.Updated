@@ -12,6 +12,6 @@ if (dbUser && dbPassword) {
 }
 console.log("server db connection URL " + mongoDBConnection);
 
-let server: any = new App(mongoDBConnection).expressApp;
+const server: any = new App(mongoDBConnection).expressApp;
 server.listen(port);
 console.log("server running in port " + port);

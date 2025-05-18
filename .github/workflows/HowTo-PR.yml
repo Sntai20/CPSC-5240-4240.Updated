@@ -11,8 +11,6 @@ on:
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
-    env:
-      WORKING_DIRECTORY: HowTo
 
     steps:
       - name: Checkout code
@@ -21,16 +19,13 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '22'
+          node-version: 22
 
       - name: Install dependencies
-        working-directory: ${{ env.WORKING_DIRECTORY }}
         run: npm install
 
       - name: Compile TypeScript
-        working-directory: ${{ env.WORKING_DIRECTORY }}
         run: npx tsc
 
       - name: Lint code
-        working-directory: ${{ env.WORKING_DIRECTORY }}
         run: npx eslint --config eslint.config.mjs . --ext .ts
