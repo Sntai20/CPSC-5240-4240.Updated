@@ -20,7 +20,8 @@
     "start": "node out/src/AppServer.js",
     "build": "rimraf out/src/pages && tsc && npm run copy-pages",
     "copy-pages": "copyfiles -u 2 src/pages/**/* out/src/pages",
-    "clean": "rimraf out node_modules"
+    "clean": "rimraf out node_modules",
+    "lint": "npx eslint --config eslint.config.mjs . --ext .ts"
   },
   "author": "",
   "license": "ISC",
