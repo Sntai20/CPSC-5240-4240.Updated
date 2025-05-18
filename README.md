@@ -37,7 +37,7 @@ chmod +x start.DbServer.sh
 
 ### Connect and Populate the database
 
-Open a new terminal and connect to the database using the database client. 
+Open a new terminal and connect to the database using the database client.
 
 Select your operating system to start the MongoDB client:
 
@@ -100,21 +100,17 @@ npm run start
 
 Test the API calls to the database.
 
-Hifi Screen - Home Page
-> http://localhost:8080/
+Hifi Screen - [Home Page](http://localhost:8080/)
 
-Routes (To test in POSTMAN):
-Tutorial - GET all / POST
-> http://localhost:8080/app/tutorials
+### Routes (To test in POSTMAN)
 
-Tutorial - GET by ID
-> http://localhost:8080/app/tutorials/{tutorialId}
+Tutorial - [GET all / POST](http://localhost:8080/app/tutorials) `/app/tutorial`
 
-Comments - GET all / POST
-> http://localhost:8080/app/comments
+Tutorial - [GET by Id](http://localhost:8080/app/tutorials/{tutorialId}) `/app/tutorials/{tutorialId}`
 
-Comments - GET by ID
-> http://localhost:8080/app/comments/{commentID}
+Comments - [GET all / POST](http://localhost:8080/app/comments) `/app/comments`
+
+Comments - [GET by Id](http://localhost:8080/app/comments/{commentId}) `/app/comments/{commentId}`
 
 ## Clean
 
