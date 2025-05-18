@@ -148,7 +148,7 @@ project-root/
 ├── src/
 │   ├── controllers/
 │       ├── example.controller.ts
-│   ├── models/
+│   ├── model/
 │       ├── example.model.ts
 │   ├── routes/
 │       ├── example.route.ts
