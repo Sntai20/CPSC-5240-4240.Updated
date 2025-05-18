@@ -1,67 +1,87 @@
 import { expect } from 'chai';
 import * as sinon from 'sinon';
-import * as express from 'express';
-import { App } from '../src/App';
-// eslint-disable-next-line @typescript-eslint/no-require-imports
+import * as supertest from 'supertest';
 const proxyquire = require('proxyquire').noCallThru();
 
 // Mock TutorialModel and CommentModel
 class TutorialModelMock {
     createModel = sinon.stub().resolves();
-    retrieveAllTutorials = sinon.stub();
-    retrieveTutorial = sinon.stub();
-    createTutorial = sinon.stub();
-    constructor(public conn: string) {}
+    retrieveAllTutorials = sinon.stub().callsFake((res) => res.json([{ tutorialId: '1', title: 'Test' }]));
+    retrieveTutorial = sinon.stub().callsFake((res, id) => res.json({ tutorialId: id, title: 'Test' }));
+    createTutorial = sinon.stub().callsFake((res, obj) => res.status(201).json(obj));
 }
 class CommentModelMock {
     createModel = sinon.stub().resolves();
-    retrieveAll = sinon.stub();
-    retrieveByID = sinon.stub();
-    createComment = sinon.stub();
-    constructor(public conn: string) {}
+    retrieveAll = sinon.stub().callsFake((res) => res.json([{ id: '1', text: 'Comment' }]));
+    retrieveByID = sinon.stub().callsFake((res, id) => res.json({ id, text: 'Comment' }));
+    createComment = sinon.stub().callsFake((res, obj) => res.status(201).json(obj));
 }
 
-// Patch the imports in App to use mocks
+// Patch the App to use mocks
+const AppPatched = proxyquire('../src/App', {
+    './model/TutorialModel': { TutorialModel: TutorialModelMock },
+    './model/CommentModel': { CommentModel: CommentModelMock }
+}).App;
 
 describe('App', () => {
-    let AppPatched: typeof App;
-    let sandbox: sinon.SinonSandbox;
+    let app: any;
+    let request: any;
 
-    before(() => {
-        AppPatched = proxyquire('../src/App', {
-            '../src/model/TutorialModel': { TutorialModel: TutorialModelMock },
-            '../src/model/CommentModel': { CommentModel: CommentModelMock }
-        }).App;
+    beforeEach(async () => {
+        app = new AppPatched('mongodb://fake');
+        // Wait for routes to be set up
+        await new Promise(resolve => setTimeout(resolve, 10));
+        request = supertest(app.expressApp);
     });
 
-    beforeEach(() => {
-        sandbox = sinon.createSandbox();
+    describe('TutorialModel endpoints', () => {
+        it('GET /app/tutorials should return all tutorials', async () => {
+            const res = await request.get('/app/tutorials');
+            expect(res.status).to.equal(200);
+            expect(res.body).to.be.an('array');
+            expect(res.body[0]).to.have.property('tutorialId');
+        });
+
+        it('GET /app/tutorials/:tutorialId should return a tutorial', async () => {
+            const res = await request.get('/app/tutorials/123');
+            expect(res.status).to.equal(200);
+            expect(res.body).to.have.property('tutorialId', '123');
+        });
+
+        it('POST /app/tutorials should create a tutorial', async () => {
+            const res = await request.post('/app/tutorials').send({ title: 'New Tutorial' });
+            expect(res.status).to.equal(201);
+            expect(res.body).to.have.property('title', 'New Tutorial');
+            expect(res.body).to.have.property('tutorialId');
+        });
     });
 
-    afterEach(() => {
-        sandbox.restore();
+    describe('CommentModel endpoints', () => {
+        it('GET /app/comments should return all comments', async () => {
+            const res = await request.get('/app/comments');
+            expect(res.status).to.equal(200);
+            expect(res.body).to.be.an('array');
+            expect(res.body[0]).to.have.property('id');
+        });
+
+        it('GET /app/comments/:id should return a comment', async () => {
+            const res = await request.get('/app/comments/abc');
+            expect(res.status).to.equal(200);
+            expect(res.body).to.have.property('id', 'abc');
+        });
+
+        it('POST /app/comments should create a comment', async () => {
+            const res = await request.post('/app/comments').send({ text: 'Hello' });
+            expect(res.status).to.equal(201);
+            expect(res.body).to.have.property('text', 'Hello');
+        });
     });
 
-    it('should initialize express app and models', async () => {
-        const app = new AppPatched('mongodb://test');
-        expect(app.expressApp).to.be.an('function');
-        expect(app.Tutorials).to.be.instanceOf(TutorialModelMock);
-        expect(app.Comments).to.be.instanceOf(CommentModelMock);
-    });
-
-    it('should set up middleware', () => {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        const useSpy = sandbox.spy((express as any).application, 'use');
-        new AppPatched('mongodb://test');
-        expect(useSpy.callCount).to.be.greaterThan(0);
-    });
-
-    it('should register routes after models are created', async () => {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        const useSpy = sandbox.spy((express as any).application, 'use');
-        new AppPatched('mongodb://test');
-        await new Promise(res => setTimeout(res, 10));
-        // Should register router and static middleware
-        expect(useSpy.calledWith('/', sinon.match.any)).to.equal(true);
+    describe('CORS middleware', () => {
+        it('should set CORS headers', async () => {
+            const res = await request.get('/app/tutorials');
+            expect(res.headers).to.have.property('access-control-allow-origin', '*');
+            expect(res.headers).to.have.property('access-control-allow-headers');
+        });
     });
 });
