@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { TutorialListsComponent } from './tutorial-lists/tutorial-lists.component';
 import { TutorialDetailsComponent } from './tutorial-details/tutorial-details.component';
-import { provideHttpClient } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
 import { TutorialProxyService } from './tutorial-proxy.service';
 
