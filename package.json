@@ -16,11 +16,12 @@
     "typescript": "^5.2.2"
   },
   "scripts": {
-    "test": "mocha -r ts-node/register test/**/*.ts",
+    "test": "mocha -r ts-node/register test/**/*.test.ts",
     "start": "node out/src/AppServer.js",
     "build": "rimraf out/src/pages && tsc && npm run copy-pages",
     "copy-pages": "copyfiles -u 2 src/pages/**/* out/src/pages",
-    "clean": "rimraf out node_modules"
+    "clean": "rimraf out node_modules",
+    "lint": "npx eslint --config eslint.config.mjs . --ext .ts"
   },
   "author": "",
   "license": "ISC",
@@ -30,6 +31,7 @@
     "@types/mocha": "^10.0.10",
     "@types/serve-static": "^1.15.7",
     "@types/sinon": "^17.0.4",
+    "@types/supertest": "^6.0.3",
     "@typescript-eslint/eslint-plugin": "^8.32.1",
     "@typescript-eslint/parser": "^8.32.1",
     "chai": "^5.2.0",
@@ -39,6 +41,7 @@
     "proxyquire": "^2.1.3",
     "rimraf": "^6.0.1",
     "sinon": "^20.0.0",
+    "supertest": "^7.1.1",
     "ts-node": "^10.9.2",
     "typescript-eslint": "^8.32.1"
   }

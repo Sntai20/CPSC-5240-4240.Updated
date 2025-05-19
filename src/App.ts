@@ -2,7 +2,8 @@ import * as express from 'express';
 import * as bodyParser from 'body-parser';
 import { TutorialModel } from './model/TutorialModel';
 import { CommentModel } from './model/CommentModel';
-import * as crypto from 'crypto';
+import { tutorialRoutes } from './routes/tutorialRoutes';
+import { commentRoutes } from './routes/commentRoutes';
 
 // Creates and configures an ExpressJS web server.
 class App {
@@ -40,34 +41,8 @@ class App {
 
   // Configure API endpoints.
   private routes(): void {
-    const router = express.Router();
-
-    // TutorialModel endpoints
-    router.get('/app/tutorials', async (req, res) => {
-      await this.Tutorials.retrieveAllTutorials(res);
-    });
-    router.get('/app/tutorials/:tutorialId', async (req, res) => {
-      await this.Tutorials.retrieveTutorial(res, req.params.tutorialId);
-    });
-    router.post('/app/tutorials', async (req, res) => {
-      const id = req.body.tutorialId || crypto.randomBytes(8).toString('hex');
-      const jsonObj = { ...req.body, tutorialId: id };
-      await this.Tutorials.createTutorial(res, jsonObj);
-    });
-
-    // CommentModel endpoints
-    router.get('/app/comments', async (req, res) => {
-      await this.Comments.retrieveAll(res);
-    });
-    router.get('/app/comments/:id', async (req, res) => {
-      await this.Comments.retrieveByID(res, req.params.id);
-    });
-    router.post('/app/comments', async (req, res) => {
-      await this.Comments.createComment(res, req.body);
-    });
-
-    // Static file routes
-    this.expressApp.use('/', router);
+    this.expressApp.use('/', tutorialRoutes(this.Tutorials));
+    this.expressApp.use('/', commentRoutes(this.Comments));
     this.expressApp.use('/', express.static(__dirname + '/pages'));
   }
 }
