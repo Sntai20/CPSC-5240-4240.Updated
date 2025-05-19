@@ -1,6 +1,6 @@
 <a *ngFor="let tutorial of tutorials" 
    class="card shadow-sm text-decoration-none text-dark"
-   [routerLink]="['/tutorials', tutorial._id]">
+   [routerLink]="['/tutorials', tutorial.tutorialId]">
   <div class="card-body">
     <h5 class="card-title">{{ tutorial.title }}</h5>
     <h6 class="card-subtitle mb-2 text-muted">{{ tutorial.category }}</h6>
