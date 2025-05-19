@@ -404,5 +404,8 @@ FodyWeavers.xsd
 .DS_Store
 **/.DS_Store
 
-# Ignore all Javascript files in the HowTo directory
-HowTo/**/*.js*
+# Ignore all Javascript files in the src directory
+src/**/*.js*
+
+# Ignore build and temporary output files
+**/[Oo]ut/*
