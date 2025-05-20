@@ -21,6 +21,6 @@ export class TutorialListsComponent implements OnInit {
   }
 
   goBack() {
-    this.router.navigate(['']);
+    this.router.navigate(['/']);
   }
 }
