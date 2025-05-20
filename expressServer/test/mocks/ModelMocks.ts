@@ -1,6 +1,5 @@
 import * as sinon from 'sinon';
 
-// Mock TutorialModel and CommentModel
 class TutorialModelMock {
     createModel = sinon.stub().resolves();
     retrieveAllTutorials = sinon.stub().callsFake((res) => res.json([{ tutorialId: '1', title: 'Test' }]));
@@ -25,4 +24,24 @@ class CommentModelMock {
     createComment = sinon.stub().callsFake((res, obj) => res.status(201).json(obj));
 }
 
-export { TutorialModelMock, CommentModelMock };
+class CommunityNoteModelMock {
+    createModel = sinon.stub().resolves();
+    retrieveAll = sinon.stub().callsFake((res) => res.json([{ noteId: '1', title: 'Note' }]));
+    retrieveByID = sinon.stub().callsFake((res, id) => {
+        if (id === '999') {
+            return res.status(404).end();
+        }
+        return res.json({ noteId: id, title: 'Note' });
+    }
+    );
+    retrieveByTutorialID = sinon.stub().callsFake((res, id) => {
+        if (id === '999') {
+            return res.status(404).end();
+        }
+        return res.json([{ noteId: id, title: 'Note' }]);
+    }
+    );
+    createCommunityNote = sinon.stub().callsFake((res, obj) => res.status(201).json(obj));
+}
+
+export { TutorialModelMock, CommentModelMock, CommunityNoteModelMock };
