@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TutorialProxyService } from '../tutorial-proxy.service';
+import { TutorialProxyService } from '../services/tutorial-proxy.service';
 import { Router } from '@angular/router';
 
 @Component({
