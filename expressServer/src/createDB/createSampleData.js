@@ -1,11 +1,10 @@
-const { title } = require("process");
+// This script is used to create sample data for the MongoDB database.
 
 db = db.getSiblingDB('tutorialPlatform')
 
 db.createCollection('tutorials');
 db.createCollection('comments');
 db.createCollection('communityNotes');
-
 
 tutorials = db.getCollection('tutorials');
 comments = db.getCollection('comments');

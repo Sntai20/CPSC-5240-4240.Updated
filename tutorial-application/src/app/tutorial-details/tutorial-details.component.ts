@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TutorialProxyService } from '../services/tutorial-proxy.service';
 import { CommunityNoteProxyService } from '../services/community-note-proxy.service';
-import { ICommunityNoteModel } from '../../../../src/interfaces/ICommunityNoteModel';
-import { ICommentModel } from '../../../../src/interfaces/ICommentModel';
+import { ICommunityNoteModel } from '../../../../expressServer/src/interfaces/ICommunityNoteModel';
+import { ICommentModel } from '../../../../expressServer/src/interfaces/ICommentModel';
 
 @Component({
   selector: 'app-tutorial-details',
