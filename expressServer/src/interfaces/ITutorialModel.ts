@@ -2,14 +2,15 @@ import * as Mongoose from 'mongoose';
 
 interface IStep {
   stepNumber: number;
-  description: string;
+  title: string;
+  text: string;
   imageUrls: string[];
   videoUrls: string[];
 }
 
 export interface ITutorial {
   title: string;
-  description: string;
+  text: string;
   tutorialId: string;
   createdDate: Date;
   updatedDate: Date;

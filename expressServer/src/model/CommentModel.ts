@@ -17,7 +17,7 @@ class CommentModel {
       {
         commentId: { type: String, required: true },
         noteId: { type: String, required: true },
-        userId: { type: String, required: true },
+        userId: { type: String, required: true, default: 'Anonymous User' },
         text: { type: String, required: true },
         votesUp: { type: Number, default: 0 },
         votesDown: { type: Number, default: 0 },
@@ -50,7 +50,23 @@ class CommentModel {
     }
   }
 
-  //GET comment by ID
+//GET all comments for specific community note
+  public async retrieveByNoteID(response: any, noteId: string): Promise<void> {
+    try {
+      const docs = await this.model
+        .find({ noteId })
+        .sort({ createdDate: -1 })
+        .exec();
+      response.json(docs);
+    } catch (e) {
+      console.error(e);
+      response
+        .status(500)
+        .json({ message: 'Error retrieving comments for note', error: e });
+    }
+  }
+
+  //GET specific comment by ID
   public async retrieveByID(response: any, commentId: string): Promise<void> {
     try {
       const doc = await this.model.findOne({ commentId }).exec();

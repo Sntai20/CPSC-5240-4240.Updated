@@ -2,6 +2,7 @@
 
 1. Run and seed the Mongo database with sample data.
 1. Build and run the Backend API.
+1. Build and run the Frontend.
 1. Test the API calls to the database.
 
 ## Database setup guide
@@ -66,7 +67,7 @@ mongo --port 3000 --authenticationDatabase admin
 Once connected to the database, run the following commands to populate the demo data.
 
 ```bash
-load ('src/createDB/createSampleData.js');
+load ('expressServer/src/createDB/createSampleData.js');
 
 show dbs
 use tutorialPlatform
@@ -74,9 +75,21 @@ show collections
 db.tutorials.find()
 db.comments.find()
 
-load ('src/createDB/createAdminUser.js');
+load ('expressServer/src/createDB/createAdminUser.js');
 show users
 exit
+```
+
+## Build and run the Backend and Frontend
+
+This section combines the `Backend API` and `Frontend` sections.
+
+Starting from the `repository root` directory, run the following commands to install npm packages, compile the node server, compile the angular server, run the backend and frontend.
+
+```bash
+npm install
+npm run build
+npm run start
 ```
 
 ## Backend API
@@ -109,11 +122,41 @@ The following command runs the node server on port 8080.
 npm run start --workspace=expressServer
 ```
 
+## FrontEnd
+
+Starting from the `repository root` directory, install npm packages, compile the Angular server, run the unit tests, and run the Angular server.
+
+### Build the frontend
+
+The following commands installs the npm packages, then compiles the server.
+
+```bash
+npm install
+
+npm run build --workspace=tutorial-application
+```
+
+### Run frontend Unit Test
+
+To run the unit tests, this step assumes the npm packages were installed using `npm install` in the previous step.
+
+```bash
+npm run test --workspace=tutorial-application
+```
+
+### Run the Frontend
+
+The following command runs the frontend server.
+
+```bash
+npm run start --workspace=tutorial-application
+```
+
 ## Test API Guide
 
 Test the API calls to the database.
 
-Hifi Screen - [Home Page](http://localhost:8080/)
+Hifi Screen - [Home Page](http://localhost:4200/)
 
 ### Routes (To test in POSTMAN)
 
@@ -135,7 +178,7 @@ npm run clean --workspace=expressServer
 
 ## Project Structure
 
-The expressServer project uses a standard Node.js project structure for a REST API.
+The expressServer project uses a standard Node.js REST API project structure.
 
 ```text
 Repository-Root/
@@ -167,6 +210,10 @@ Repository-Root/
 │   └── tsconfig.json
 │
 ├── package.json
+├── start.DbServer.cmd
+├── start.DbServer.sh
+├── startDbClient.admin.cmd
+├── startDbClient.PopulateSampleData.cmd
 ├── .gitignore
 └── README.md
 ```

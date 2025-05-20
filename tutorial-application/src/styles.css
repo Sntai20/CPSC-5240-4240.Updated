@@ -1,1 +1,16 @@
-/* You can add global styles to this file, and also import other style files */
+@import 'bootstrap/dist/css/bootstrap.min.css';
+@import 'bootstrap-icons/font/bootstrap-icons.css';
+
+.app-nav {
+  background: #333;
+  padding: 0.5rem 1rem;
+}
+.app-nav a {
+  color: #fff;
+  text-decoration: none;
+  margin-right: 1rem;
+  font-weight: 500;
+}
+.app-nav a.active {
+  border-bottom: 2px solid #fff;
+}

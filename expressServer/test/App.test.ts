@@ -1,13 +1,14 @@
 import { expect } from 'chai';
 import * as supertest from 'supertest';
-import { TutorialModelMock, CommentModelMock } from './mocks/ModelMocks';
+import { TutorialModelMock, CommentModelMock, CommunityNoteModelMock } from './mocks/ModelMocks';
 // eslint-disable-next-line @typescript-eslint/no-require-imports
 const proxyquire = require('proxyquire').noCallThru();
 
 // Patch the App to use mocks
 const AppPatched = proxyquire('../src/App', {
     './model/TutorialModel': { TutorialModel: TutorialModelMock },
-    './model/CommentModel': { CommentModel: CommentModelMock }
+    './model/CommentModel': { CommentModel: CommentModelMock },
+    './model/CommunityNoteModel': { CommunityNoteModel: CommunityNoteModelMock },
 }).App;
 
 describe('App', () => {
