@@ -28,7 +28,7 @@ jobs:
         run: npm run build
 
       - name: Run unit tests
-        run: npm run test --workspace=expressServer
+        run: npm run test
 
       - name: Run linter
         run: npm run lint

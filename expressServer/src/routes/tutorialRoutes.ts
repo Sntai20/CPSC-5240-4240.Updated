@@ -8,9 +8,11 @@ export function tutorialRoutes(Tutorials: TutorialModel) {
   router.get('/app/tutorials', async (req, res) => {
     await Tutorials.retrieveAllTutorials(res);
   });
+
   router.get('/app/tutorials/:tutorialId', async (req, res) => {
     await Tutorials.retrieveTutorial(res, req.params.tutorialId);
   });
+
   router.post('/app/tutorials', async (req, res) => {
     const id = req.body.tutorialId || crypto.randomBytes(8).toString('hex');
     const jsonObj = { ...req.body, tutorialId: id };
