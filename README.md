@@ -6,7 +6,7 @@
 
 ## Database setup guide
 
-Starting from the `repository root` directory, setup and run the Mongo database.
+Starting from the `expressServer` directory, setup and run the Mongo database.
 
 ### Start the MongoDB Database
 
@@ -90,7 +90,7 @@ The following commands installs the npm packages, then compiles the node server 
 ```bash
 npm install
 
-npm run build
+npm run build --workspace=expressServer
 ```
 
 ### Run Unit Test
@@ -98,7 +98,7 @@ npm run build
 To run the unit tests, this step assumes the npm packages were installed using `npm install` in the previous step.
 
 ```bash
-npm test
+npm run test --workspace=expressServer
 ```
 
 ### Run the Server
@@ -106,7 +106,7 @@ npm test
 The following command runs the node server on port 8080.
 
 ```bash
-npm run start
+npm run start --workspace=expressServer
 ```
 
 ## Test API Guide
@@ -130,37 +130,43 @@ Comments - [GET by Id](http://localhost:8080/app/comments/{commentId}) - `/app/c
 The following command removes the database files, the node_modules directory, and the compiled node server.
 
 ```bash
-npm run clean
+npm run clean --workspace=expressServer
 ```
 
 ## Project Structure
 
-The HowTo project uses a standard Node.js project structure for a REST API. Since there is only one project, the project root is also the repository root.
+The expressServer project uses a standard Node.js project structure for a REST API.
 
 ```text
-project-root/
-├── node_modules/
-├── out/ (The compiled server runs from the out directory.)
+Repository-Root/
+│
+├── expressServer/ (project-root)
+│   ├── node_modules/
+│   ├── out/ (The compiled server runs from the out directory.)
+│   │   ├── src/
+│   │       ├── pages/
+│   │       ├── App.js
+│   │       ├── AppServer.js
 │   ├── src/
-│       ├── pages/
-│       ├── App.js
-│       ├── AppServer.js
-├── src/
-│   ├── controllers/
-│       ├── example.controller.ts
-│   ├── model/
-│       ├── example.model.ts
-│   ├── routes/
-│       ├── example.route.ts
-│   ├── services/
-│       ├── example.service.ts
-│   ├── App.ts
-│   └── AppServer.ts
-├── test/
-│   ├── unit/
-│   └── integration/
+│   │   ├── model/
+│   │       ├── example.model.ts
+│   │   ├── routes/
+│   │       ├── example.route.ts
+│   │   ├── App.ts
+│   │   └── AppServer.ts
+│   ├── test/
+│   │   ├── unit/
+│   ├── package.json
+│   └── tsconfig.json
+│
+├── tutorial-application/ (project-root)
+│   ├── public/
+│   ├── src/
+│   │   ├── app/
+│   ├── package.json
+│   └── tsconfig.json
+│
 ├── package.json
-├── tsconfig.json
 ├── .gitignore
 └── README.md
 ```

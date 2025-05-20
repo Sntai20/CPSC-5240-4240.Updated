@@ -3,7 +3,7 @@ import tsParser from '@typescript-eslint/parser';
 
 export default [
     {
-        ignores: ['**/out/**', '**/References/**','**/dist/**', 'src/createDB/createAdminUser.js'],
+        ignores: ['**/out/**', '**/References/**','**/dist/**', 'expressServer/src/createDB/createAdminUser.js'],
     },
     {
         files: ['**/*.ts'],
