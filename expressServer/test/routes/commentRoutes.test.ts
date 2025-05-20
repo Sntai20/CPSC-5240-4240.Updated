@@ -6,45 +6,74 @@ const proxyquire = require('proxyquire').noCallThru();
 
 // Patch the App to use mocks
 const AppPatched = proxyquire('../../src/App', {
-    './model/TutorialModel': { TutorialModel: TutorialModelMock },
-    './model/CommentModel': { CommentModel: CommentModelMock },
-    './model/CommunityNoteModel': { CommunityNoteModel: CommunityNoteModelMock },
+  './model/TutorialModel': { TutorialModel: TutorialModelMock },
+  './model/CommentModel': { CommentModel: CommentModelMock },
+  './model/CommunityNoteModel': { CommunityNoteModel: CommunityNoteModelMock },
 }).App;
 
-describe('App', () => {
-    let app: any;
-    let request: any;
+describe('CommentModel endpoints', () => {
+  let request: any;
 
-    beforeEach(async () => {
-        app = new AppPatched('mongodb://fake');
-        // Wait for routes to be set up
-        await new Promise(resolve => setTimeout(resolve, 10));
+  before(() => {
+    const app = new AppPatched('mongodb://fake');
+    return new Promise<void>(resolve => {
+      setTimeout(() => {
         request = supertest(app.expressApp);
+        resolve();
+      }, 10);
+    });
+  });
+
+  //GET all
+  describe('GET /app/communityNotes/:noteId/comments (List Objects)', () => {
+    it('should return status 200', async () => {
+      const res = await request.get('/app/communityNotes/note123/comments');
+      expect(res.status).to.equal(200);
     });
 
-    describe('CommentModel endpoints', () => {
-        it('GET /app/comments/:id should return a comment', async () => {
-            const res = await request.get('/app/comments/abc');
-            expect(res.status).to.equal(200);
-            expect(res.body).to.have.property('id', 'abc');
-        });
-
-        it('GET /app/comments should return all comments', async () => {
-            const res = await request.get('/app/comments');
-            expect(res.status).to.equal(200);
-            expect(res.body).to.be.an('array');
-            expect(res.body[0]).to.have.property('id');
-        });
-
-        it('GET /app/comments/:id should return 404 for non-existing comment', async () => {
-            const res = await request.get('/app/comments/999');
-            expect(res.status).to.equal(404);
-        });
-
-        it('POST /app/comments should create a comment', async () => {
-            const res = await request.post('/app/comments').send({ text: 'Hello' });
-            expect(res.status).to.equal(201);
-            expect(res.body).to.have.property('text', 'Hello');
-        });
+    it('should return an array of comments with length ≥ 2', async () => {
+      const res = await request.get('/app/communityNotes/note123/comments');
+      expect(res.body).to.be.an('array').with.length.of.at.least(2);
     });
+
+    it('each comment should have comentId, noteId, and text', async () => {
+      const res = await request.get('/app/communityNotes/note123/comments');
+      res.body.forEach((c: any) => {
+        expect(c).to.include.keys('id', 'noteId', 'text');
+        expect(c.noteId).to.equal('note123');
+        expect(c.text).to.be.a('string');
+      });
+    });
+  });
+  
+  //GET one
+  describe('GET /app/comments/:commentId (Single Object)', () => {
+    it('should return the correct comment object', async () => {
+      const res = await request.get('/app/comments/1');
+      expect(res.status).to.equal(200);
+      expect(res.body).to.include({ id: '1', text: 'Comment' });
+    });
+
+    it('returned comment should have only commentId and text', async () => {
+      const res = await request.get('/app/comments/1');
+      expect(Object.keys(res.body)).to.have.members(['id', 'text']);
+    });
+
+    it('should return 404 for non-existing comment', async () => {
+      const res = await request.get('/app/comments/999');
+      expect(res.status).to.equal(404);
+    });
+  });
+
+  //POST
+  describe('POST /app/communityNotes/:noteId/comments', () => {
+    const payload = {commentId: 'new1',noteId: 'note123', userId: 'userX', text: 'Hello'};
+
+    it('should create a comment and return status 201', async () => {
+      const res = await request
+        .post('/app/communityNotes/note123/comments')
+        .send(payload);
+      expect(res.status).to.equal(201);
+    });
+  });
 });
