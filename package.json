@@ -13,6 +13,7 @@
     "lint": "eslint --config eslint.config.mjs \"expressServer/src/**/*.ts\" \"tutorial-application/src/**/*.ts\""
   },
   "devDependencies": {
+    "@types/mocha": "^10.0.10",
     "@typescript-eslint/eslint-plugin": "^8.32.1",
     "concurrently": "^9.1.2",
     "eslint": "^9.27.0",
