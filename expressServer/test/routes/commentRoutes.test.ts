@@ -36,7 +36,7 @@ describe('CommentModel endpoints', () => {
       expect(res.body).to.be.an('array').with.length.of.at.least(2);
     });
 
-    it('each comment should have comentId, noteId, and text', async () => {
+    it('each comment should have commentId, noteId, and text', async () => {
       const res = await request.get('/app/communityNotes/note123/comments');
       res.body.forEach((c: any) => {
         expect(c).to.include.keys('id', 'noteId', 'text');
