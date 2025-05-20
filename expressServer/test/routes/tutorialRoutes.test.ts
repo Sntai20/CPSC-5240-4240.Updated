@@ -6,8 +6,8 @@ const proxyquire = require('proxyquire').noCallThru();
 
 // Patch the App to use mocks
 const AppPatched = proxyquire('../../src/App', {
-  './model/TutorialModel':      { TutorialModel: TutorialModelMock },
-  './model/CommentModel':       { CommentModel: CommentModelMock },
+  './model/TutorialModel':{ TutorialModel: TutorialModelMock },
+  './model/CommentModel':{ CommentModel: CommentModelMock },
   './model/CommunityNoteModel': { CommunityNoteModel: CommunityNoteModelMock },
 }).App;
 
@@ -16,7 +16,6 @@ describe('TutorialModel endpoints', () => {
 
   before(() => {
     const app = new AppPatched('mongodb://fake');
-    // give routes a moment to register
     return new Promise<void>(resolve => {
       setTimeout(() => {
         request = supertest(app.expressApp);
@@ -25,6 +24,7 @@ describe('TutorialModel endpoints', () => {
     });
   });
 
+  //GET all
   describe('GET /app/tutorials (List Objects)', () => {
     it('should return status 200', async () => {
       const res = await request.get('/app/tutorials');
@@ -46,6 +46,7 @@ describe('TutorialModel endpoints', () => {
     });
   });
 
+  // GET one
   describe('GET /app/tutorials/:tutorialId (Single Object)', () => {
     it('should return the correct tutorial object', async () => {
       const res = await request.get('/app/tutorials/123');
@@ -64,7 +65,8 @@ describe('TutorialModel endpoints', () => {
       expect(res.status).to.equal(404);
     });
   });
-
+  
+  //POST
   describe('POST /app/tutorials', () => {
     it('should create a tutorial and return it', async () => {
       const payload = { title: 'New Tutorial' };
