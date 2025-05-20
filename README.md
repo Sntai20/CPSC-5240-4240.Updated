@@ -7,7 +7,7 @@
 
 ## Database setup guide
 
-Starting from the `expressServer` directory, setup and run the Mongo database.
+Starting from the `repository root` directory, setup and run the Mongo database.
 
 ### Start the MongoDB Database
 
