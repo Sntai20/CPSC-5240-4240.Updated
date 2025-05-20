@@ -6,7 +6,7 @@
 
 ## Database setup guide
 
-Starting from the `expressServer` directory, setup and run the Mongo database.
+Starting from the `repository root` directory, setup and run the Mongo database.
 
 ### Start the MongoDB Database
 
@@ -66,7 +66,7 @@ mongo --port 3000 --authenticationDatabase admin
 Once connected to the database, run the following commands to populate the demo data.
 
 ```bash
-load ('src/createDB/createSampleData.js');
+load ('expressServer/src/createDB/createSampleData.js');
 
 show dbs
 use tutorialPlatform
@@ -74,7 +74,7 @@ show collections
 db.tutorials.find()
 db.comments.find()
 
-load ('src/createDB/createAdminUser.js');
+load ('expressServer/src/createDB/createAdminUser.js');
 show users
 exit
 ```
