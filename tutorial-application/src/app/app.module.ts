@@ -6,21 +6,28 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { TutorialListsComponent } from './tutorial-lists/tutorial-lists.component';
 import { TutorialDetailsComponent } from './tutorial-details/tutorial-details.component';
 import { HttpClientModule } from '@angular/common/http';
-import { TutorialProxyService } from './tutorial-proxy.service';
+import { FormsModule } from '@angular/forms';
+import { TutorialProxyService } from './services/tutorial-proxy.service';
+import { CommunityNoteProxyService }   from './services/community-note-proxy.service';
+import { AffiliatesComponent } from './affiliates/affiliates.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     WelcomeComponent,
     TutorialListsComponent,
-    TutorialDetailsComponent
+    TutorialDetailsComponent,
+    AffiliatesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule      
   ],
-  providers: [ TutorialProxyService],
+  providers: [ 
+    TutorialProxyService,
+    CommunityNoteProxyService,],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

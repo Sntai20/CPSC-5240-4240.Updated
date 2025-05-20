@@ -9,14 +9,17 @@
      class="card shadow-sm mb-3 text-decoration-none text-dark"
      [routerLink]="['/tutorials', tutorial.tutorialId]">
     <div class="card-body">
-      <h5 class="card-title">{{ tutorial.title }}</h5>
-      <h6 class="card-subtitle mb-2 text-muted">{{ tutorial.category }}</h6>
-      <p class="card-text">{{ tutorial.description }}</p>
+      <h5 class="card-title">{{tutorial.title}}</h5>
+      <h6 class="card-subtitle mb-2 text-muted">{{tutorial.category}}</h6>
+      <p class="card-text">{{tutorial.text | slice:0:80}}
+        <span *ngIf="tutorial.text.length>80">...</span>
+      </p>
+
 
       <ul class="list-inline mb-2">
-        <li class="list-inline-item"><strong>Author:</strong> {{ tutorial.authorName }}</li>
-        <li class="list-inline-item"><strong>Views:</strong> {{ tutorial.views }}</li>
-        <li class="list-inline-item"><strong>Likes:</strong> {{ tutorial.likes }}</li>
+        <li class="list-inline-item"><strong>Author:</strong> {{tutorial.authorName}}</li>
+        <li class="list-inline-item"><strong>Views:</strong> {{tutorial.views}}</li>
+        <li class="list-inline-item"><strong>Likes:</strong> {{tutorial.likes}}</li>
       </ul>
     </div>
   </a>

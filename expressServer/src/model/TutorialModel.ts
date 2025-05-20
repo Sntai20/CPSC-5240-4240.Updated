@@ -16,17 +16,18 @@ class TutorialModel {
     public createSchema(): void {
         this.stepsSchema = new Mongoose.Schema(
             {
-                stepNumber: Number,
-                description: String,
-                imageUrls: [String],
-                videoUrls: [String]
+                stepNumber: { type: Number, required: true },
+                title: { type: String, required: true },
+                text: { type: String, required: true, default: 'Placeholder Text' },
+                imageUrls: { type: [String], default: [] },
+                videoUrls: { type: [String], default: [] }
             }
         );
 
         this.schema = new Mongoose.Schema(
             {
                 title: { type: String, required: true },
-                description: { type: String, required: true },
+                text: { type: String, required: true },
                 tutorialId: { type: String, required: true, unique: true },
                 createdDate: { type: Date, default: Date.now },
                 updatedDate: { type: Date, default: Date.now },
@@ -75,7 +76,6 @@ class TutorialModel {
         try {
             const tutorial = await query.exec();
             if (tutorial) {
-                // Increment view count
                 tutorial.views += 1;
                 await tutorial.save();
                 response.json(tutorial);
