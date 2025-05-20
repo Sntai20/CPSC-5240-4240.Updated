@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { ICommunityNoteModel } from '../../../../src/interfaces/ICommunityNoteModel';
-import { ICommentModel } from '../../../../src/interfaces/ICommentModel';
+import { ICommunityNoteModel } from '../../../../expressServer/src/interfaces/ICommunityNoteModel';
+import { ICommentModel } from '../../../../expressServer/src/interfaces/ICommentModel';
 
 @Injectable({
   providedIn: 'root'
