@@ -6,7 +6,7 @@
 
 ## Database setup guide
 
-Starting from the `expressServer` directory, setup and run the Mongo database.
+Starting from the `repository root` directory, setup and run the Mongo database.
 
 ### Start the MongoDB Database
 
@@ -167,6 +167,10 @@ Repository-Root/
 │   └── tsconfig.json
 │
 ├── package.json
+├── start.DbServer.cmd
+├── start.DbServer.sh
+├── startDbClient.admin.cmd
+├── startDbClient.PopulateSampleData.cmd
 ├── .gitignore
 └── README.md
 ```

@@ -2,7 +2,8 @@
   "name": "cpsc-5240-4240.updated",
   "private": true,
   "workspaces": [
-    "expressServer"
+    "expressServer",
+    "tutorial-application"
   ],
   "scripts": {
     "clean": "rimraf out node_modules",
