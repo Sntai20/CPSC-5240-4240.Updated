@@ -4,8 +4,10 @@ import { expect } from 'chai';
 
 chai.use(chaiHttp);
 
+const baseUrl = 'http://localhost:8080';
+
 describe('TutorialModel API endpoints (E2E)', () => {
-  var baseUrl = 'http://localhost:8080';
+
   describe('POST /app/tutorials (E2E)', () => {
     it('should create a tutorial and return it', async () => {
       const newTutorial = {

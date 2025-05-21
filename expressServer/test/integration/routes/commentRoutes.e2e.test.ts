@@ -4,8 +4,10 @@ import { expect } from 'chai';
 
 chai.use(chaiHttp);
 
+const baseUrl = 'http://localhost:8080';
+
 describe('CommentModel API endpoints (E2E)', () => {
-  var baseUrl = 'http://localhost:8080';
+
   describe('POST /app/comments (E2E)', () => {
     it('should create a comment and return it', async () => {
       const newComment = {
