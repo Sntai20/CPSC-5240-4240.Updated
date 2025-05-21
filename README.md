@@ -176,7 +176,7 @@ The following command runs the frontend server.
 npm run start --workspace=tutorial-application
 ```
 
-## Manual Test End-To-End Guide
+## Manual End-To-End Test Guide
 
 To test the frontend, backend, and the database, this step assumes the frontend, backend, and database are running.
 
