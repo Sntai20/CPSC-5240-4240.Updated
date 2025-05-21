@@ -6,30 +6,31 @@ chai.use(chaiHttp);
 
 const baseUrl = 'http://localhost:8080';
 
+function generateTutorial(overrides = {}) {
+  const uniqueId = `${Date.now()}-${Math.floor(Math.random() * 10000)}`;
+  return {
+    tutorialId: `tut-${uniqueId}`,
+    title: 'Test Tutorial',
+    text: 'This is the main content of the test tutorial.',
+    createdDate: new Date().toISOString(),
+    updatedDate: new Date().toISOString(),
+    authorId: `author-${uniqueId}`,
+    authorName: 'Test Author',
+    category: 'Testing',
+    tags: ['test', 'tutorial'],
+    views: 0,
+    likes: 0,
+    dislikes: 0,
+    steps: [],
+    published: true,
+    ...overrides,
+  };
+}
+
 describe('TutorialModel API endpoints (E2E)', () => {
-
   describe('POST /app/tutorials (E2E)', () => {
-    const uniqueId = `${Date.now()}-${Math.floor(Math.random() * 10000)}`;
-    const uniqueAuthorId = `author-${uniqueId}`;
-    const uniqueTutorialId = `tut-${uniqueId}`;
     it('should create a tutorial and return it', async () => {
-      const newTutorial = {
-        tutorialId: uniqueTutorialId,
-        title: 'Test Tutorial',
-        text: 'This is the main content of the test tutorial.',
-        createdDate: new Date().toISOString(),
-        updatedDate: new Date().toISOString(),
-        authorId: uniqueAuthorId,
-        authorName: 'Test Author',
-        category: 'Testing',
-        tags: ['test', 'tutorial'],
-        views: 0,
-        likes: 0,
-        dislikes: 0,
-        steps: [],
-        published: true,
-      };
-
+      const newTutorial = generateTutorial();
       const res = await request.execute(baseUrl)
         .post('/app/tutorials')
         .send(newTutorial)
@@ -44,40 +45,16 @@ describe('TutorialModel API endpoints (E2E)', () => {
   });
 
   describe('GET /app/tutorials (List Objects) (E2E)', () => {
-    it('should return status 200 for GET /app/tutorials', done => {
-      request.execute(baseUrl)
-        .get('/app/tutorials')
-        .end((err, res) => {
-          expect(res).to.have.status(200);
-          expect(res.body).to.be.an('array').with.length.of.at.least(1);
-          done();
-        });
+    it('should return status 200 for GET /app/tutorials', async () => {
+      const res = await request.execute(baseUrl).get('/app/tutorials');
+      expect(res).to.have.status(200);
+      expect(res.body).to.be.an('array').with.length.of.at.least(1);
     });
   });
 
-  describe('GET /app/tutorials (Single Object) (E2E)', () => {
-    const uniqueId = `${Date.now()}-${Math.floor(Math.random() * 10000)}`;
-    const uniqueAuthorId = `author-${uniqueId}`;
-    const uniqueTutorialId = `tut-${uniqueId}`;
+  describe('GET /app/tutorials/:tutorialId (Single Object) (E2E)', () => {
     it('should return status 200 for GET /app/tutorials/:tutorialId', async () => {
-      const newTutorial = {
-        tutorialId: uniqueTutorialId,
-        title: 'Test Tutorial',
-        text: 'This is the main content of the test tutorial.',
-        createdDate: new Date().toISOString(),
-        updatedDate: new Date().toISOString(),
-        authorId: uniqueAuthorId,
-        authorName: 'Test Author',
-        category: 'Testing',
-        tags: ['test', 'tutorial'],
-        views: 0,
-        likes: 0,
-        dislikes: 0,
-        steps: [],
-        published: true,
-      };
-
-      // First, create the tutorial and wait for it to finish
+      const newTutorial = generateTutorial();
       const postRes = await request.execute(baseUrl)
         .post('/app/tutorials')
         .send(newTutorial)
