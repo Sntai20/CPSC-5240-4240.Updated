@@ -19,7 +19,7 @@ describe('CommentModel API endpoints (E2E)', () => {
         votesDown: 0,
       };
       const res = await request.execute(baseUrl)
-        .post('/app/comments')
+        .post(`/app/communityNotes/${newComment.noteId}/comments`)
         .send(newComment)
         .set('Content-Type', 'application/json')
         .set('Accept', 'application/json');
