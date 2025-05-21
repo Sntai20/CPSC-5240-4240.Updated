@@ -5,7 +5,7 @@ import { TutorialModelMock, CommentModelMock, CommunityNoteModelMock } from '../
 const proxyquire = require('proxyquire').noCallThru();
 
 // Patch the App to use mocks
-const AppPatched = proxyquire('../../src/App', {
+const AppPatched = proxyquire('../../../src/App', {
   './model/TutorialModel': { TutorialModel: TutorialModelMock },
   './model/CommentModel': { CommentModel: CommentModelMock },
   './model/CommunityNoteModel': { CommunityNoteModel: CommunityNoteModelMock },
