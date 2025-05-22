@@ -106,13 +106,37 @@ npm install
 npm run build --workspace=expressServer
 ```
 
-### Run Unit Test
+### Run Test
+
+There are both unit tests and integration tests for the backend API.
+
+#### Unit Test
 
 To run the unit tests, this step assumes the npm packages were installed using `npm install` in the previous step.
 
 ```bash
 npm run test --workspace=expressServer
 ```
+
+#### Integration Test End-to-End (E2E)
+
+To run the integration tests, this step assumes the database and API server are running.
+
+```bash
+npm run e2etest --workspace=expressServer
+```
+
+#### Manual API Calls using Postman
+
+To test the API calls to the database, this step assumes the database and API server are running.
+
+Tutorial - [GET all / POST](http://localhost:8080/app/tutorials) - `/app/tutorials`
+
+Tutorial - [GET by Id](http://localhost:8080/app/tutorials/{tutorialId}) - `/app/tutorials/{tutorialId}`
+
+Comments - [GET all / POST](http://localhost:8080/app/comments) - `/app/comments`
+
+Comments - [GET by Id](http://localhost:8080/app/comments/{commentId}) - `/app/comments/{commentId}`
 
 ### Run the Server
 
@@ -152,21 +176,11 @@ The following command runs the frontend server.
 npm run start --workspace=tutorial-application
 ```
 
-## Test API Guide
+## Manual End-To-End Test Guide
 
-Test the API calls to the database.
+To test the frontend, backend, and the database, this step assumes the frontend, backend, and database are running.
 
 Hifi Screen - [Home Page](http://localhost:4200/)
-
-### Routes (To test in POSTMAN)
-
-Tutorial - [GET all / POST](http://localhost:8080/app/tutorials) - `/app/tutorials`
-
-Tutorial - [GET by Id](http://localhost:8080/app/tutorials/{tutorialId}) - `/app/tutorials/{tutorialId}`
-
-Comments - [GET all / POST](http://localhost:8080/app/comments) - `/app/comments`
-
-Comments - [GET by Id](http://localhost:8080/app/comments/{commentId}) - `/app/comments/{commentId}`
 
 ## Clean
 
@@ -199,6 +213,7 @@ Repository-Root/
 │   │   └── AppServer.ts
 │   ├── test/
 │   │   ├── unit/
+│   │   ├── integration/
 │   ├── package.json
 │   └── tsconfig.json
 │
