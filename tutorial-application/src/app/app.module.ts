@@ -8,7 +8,7 @@ import { TutorialDetailsComponent } from './tutorial-details/tutorial-details.co
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { TutorialProxyService } from './services/tutorial-proxy.service';
-import { CommunityNoteProxyService }   from './services/community-note-proxy.service';
+import { CommunityNoteProxyService } from './services/community-note-proxy.service';
 import { AffiliatesComponent } from './affiliates/affiliates.component';
 
 @NgModule({
@@ -23,9 +23,9 @@ import { AffiliatesComponent } from './affiliates/affiliates.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule      
+    FormsModule
   ],
-  providers: [ 
+  providers: [
     TutorialProxyService,
     CommunityNoteProxyService,],
   bootstrap: [AppComponent]

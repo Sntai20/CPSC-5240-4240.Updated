@@ -5,11 +5,10 @@ import { TutorialListsComponent } from './tutorial-lists/tutorial-lists.componen
 import { TutorialDetailsComponent } from './tutorial-details/tutorial-details.component';
 import { AffiliatesComponent } from './affiliates/affiliates.component';
 
-
 const routes: Routes = [
   { path: '', component: WelcomeComponent },
   { path: 'tutorials', component: TutorialListsComponent },
-  {  
+  {
     path: 'tutorials/:id', component: TutorialDetailsComponent,
     children: [
       {

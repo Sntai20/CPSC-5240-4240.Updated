@@ -14,10 +14,10 @@ import { ICommentModel } from '../../../../expressServer/src/interfaces/IComment
 export class TutorialDetailsComponent implements OnInit {
   tutorial: any;
   communityNotes: ICommunityNoteModel[] = [];
-  noteComments:   ICommentModel[]       = [];
-  dropdownOpen    = false;
-  selectedNote:   ICommunityNoteModel | null = null;
-  newCommentText  = '';
+  noteComments: ICommentModel[] = [];
+  dropdownOpen = false;
+  selectedNote: ICommunityNoteModel | null = null;
+  newCommentText = '';
   expandedSteps = new Set<number>();
   completedSteps = new Set<number>();
 
@@ -31,7 +31,7 @@ export class TutorialDetailsComponent implements OnInit {
     private tutorialProxy: TutorialProxyService,
     private noteProxy: CommunityNoteProxyService,
     private router: Router
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id')!;
@@ -65,8 +65,8 @@ export class TutorialDetailsComponent implements OnInit {
   }
 
   closeNote(): void {
-    this.selectedNote   = null;
-    this.noteComments   = [];
+    this.selectedNote = null;
+    this.noteComments = [];
     this.newCommentText = '';
   }
 
@@ -109,7 +109,7 @@ export class TutorialDetailsComponent implements OnInit {
     this.showNewModal = false;
   }
 
-    postNote(): void {
+  postNote(): void {
     if (
       !this.tutorial ||
       !this.newNoteTitle.trim() ||
@@ -119,9 +119,9 @@ export class TutorialDetailsComponent implements OnInit {
     }
     const payload: Partial<ICommunityNoteModel> = {
       tutorialId: this.tutorial.tutorialId,
-      userId:     'testuser1',  // PLACEHOLDER USER: REMEMBER TO REPLACE WITH REAL USER ONCE IMPLEMENTED
-      title:      this.newNoteTitle.trim(),
-      text:       this.newNoteText.trim()
+      userId: 'testuser1',  // PLACEHOLDER USER: REMEMBER TO REPLACE WITH REAL USER ONCE IMPLEMENTED
+      title: this.newNoteTitle.trim(),
+      text: this.newNoteText.trim()
     };
     this.noteProxy.addNote(payload).subscribe((note) => {
       this.communityNotes.unshift(note);

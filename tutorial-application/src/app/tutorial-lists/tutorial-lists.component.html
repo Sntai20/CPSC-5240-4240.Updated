@@ -5,9 +5,8 @@
   </button>
 
   <!-- Tutorial cards -->
-  <a *ngFor="let tutorial of tutorials" 
-     class="card shadow-sm mb-3 text-decoration-none text-dark"
-     [routerLink]="['/tutorials', tutorial.tutorialId]">
+  <a *ngFor="let tutorial of tutorials" class="card shadow-sm mb-3 text-decoration-none text-dark"
+    [routerLink]="['/tutorials', tutorial.tutorialId]">
     <div class="card-body">
       <h5 class="card-title">{{tutorial.title}}</h5>
       <h6 class="card-subtitle mb-2 text-muted">{{tutorial.category}}</h6>

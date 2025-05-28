@@ -4,14 +4,14 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tutorial-lists',
-  standalone : false,
+  standalone: false,
   templateUrl: './tutorial-lists.component.html',
   styleUrls: ['./tutorial-lists.component.css']
 })
 export class TutorialListsComponent implements OnInit {
   tutorials: any[] = [];
 
-  constructor(private router: Router, private proxy$: TutorialProxyService) {}
+  constructor(private router: Router, private proxy$: TutorialProxyService) { }
 
   ngOnInit() {
     this.proxy$.getTutorials().subscribe((result: any[]) => {
