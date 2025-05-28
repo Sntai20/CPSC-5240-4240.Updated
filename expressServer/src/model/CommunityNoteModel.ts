@@ -18,8 +18,8 @@ class CommunityNoteModel {
         noteId: { type: String, required: true },
         tutorialId: { type: String, required: true },
         userId: { type: String, required: true },
-        title: {type: String, required: true, default: '?MissingTitle?'},
-        text: { type: String, required: true},
+        title: { type: String, required: true, default: '?MissingTitle?' },
+        text: { type: String, required: true },
         votesDown: { type: Number, default: 0 },
         createdDate: { type: Date, default: Date.now },
         updatedDate: { type: Date, default: Date.now }

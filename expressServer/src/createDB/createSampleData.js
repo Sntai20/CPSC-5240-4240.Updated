@@ -247,7 +247,7 @@ communityNoteList = [
     text: 'In step 4, consider using JWT expiry of 1h instead of default 24h for better security.',
     votesUp: 9,
     votesDown: 0,
-    createdDate:new Date('2025-02-13')
+    createdDate: new Date('2025-02-13')
   },
   {
     noteId: 'note003',
