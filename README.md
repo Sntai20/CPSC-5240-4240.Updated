@@ -146,7 +146,7 @@ The following command runs the node server on port 8080.
 npm run start --workspace=expressServer
 ```
 
-## FrontEnd
+## Frontend
 
 Starting from the `repository root` directory, install npm packages, compile the Angular server, run the unit tests, and run the Angular server.
 
@@ -231,4 +231,36 @@ Repository-Root/
 ├── startDbClient.PopulateSampleData.cmd
 ├── .gitignore
 └── README.md
+```
+
+## Install MongoDB shell
+
+Select your operating system to install the MongoDB shell.
+
+<details>
+<summary>Windows</summary>
+
+Install the MongoDB shell on Windows using winget.
+
+```powershell
+winget install -e --id MongoDB.Shell
+```
+
+</details>
+
+<details>
+<summary>Linux/Mac</summary>
+
+Install the MongoDB shell on Linux/Mac using brew.
+
+```bash
+brew install mongosh
+```
+
+</details>
+
+## Connect to the database
+
+```bash
+mongosh "mongodb+srv://tutorialplatformcluster.utubbq2.mongodb.net/" --apiVersion 1 --username asantana1 --password ECcuTkfuVcXZyu38
 ```
