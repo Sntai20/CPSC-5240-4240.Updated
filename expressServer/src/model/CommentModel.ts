@@ -50,7 +50,7 @@ class CommentModel {
     }
   }
 
-//GET all comments for specific community note
+  //GET all comments for specific community note
   public async retrieveByNoteID(response: any, noteId: string): Promise<void> {
     try {
       const docs = await this.model

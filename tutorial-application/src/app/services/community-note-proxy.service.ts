@@ -10,7 +10,7 @@ import { ICommentModel } from '../../../../expressServer/src/interfaces/IComment
 export class CommunityNoteProxyService {
   hostUrl = 'http://localhost:8080/app/communityNotes/';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getByTutorialId(tutorialId: string): Observable<ICommunityNoteModel[]> {
     return this.http.get<ICommunityNoteModel[]>(this.hostUrl + 'tutorial/' + tutorialId);
@@ -21,10 +21,10 @@ export class CommunityNoteProxyService {
   }
 
   addComment(noteId: string, text: string): Observable<ICommentModel> {
-    return this.http.post<ICommentModel>(this.hostUrl + noteId + '/comments', {text});
+    return this.http.post<ICommentModel>(this.hostUrl + noteId + '/comments', { text });
   }
 
   addNote(payload: Partial<ICommunityNoteModel>): Observable<ICommunityNoteModel> {
-    return this.http.post<ICommunityNoteModel>( `${this.hostUrl}`,payload);
+    return this.http.post<ICommunityNoteModel>(`${this.hostUrl}`, payload);
   }
 }

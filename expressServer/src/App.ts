@@ -1,6 +1,6 @@
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
-import { TutorialModel }from './model/TutorialModel';
+import { TutorialModel } from './model/TutorialModel';
 import { CommentModel } from './model/CommentModel';
 import { CommunityNoteModel } from './model/CommunityNoteModel';
 import { tutorialRoutes } from './routes/tutorialRoutes';
@@ -9,16 +9,16 @@ import { communityNotesRoutes } from './routes/communityNotesRoutes';
 
 class App {
   public expressApp: express.Application;
-  public Tutorials:      TutorialModel;
-  public Comments:       CommentModel;
+  public Tutorials: TutorialModel;
+  public Comments: CommentModel;
   public CommunityNotes: CommunityNoteModel;
 
   constructor(mongoDBConnection: string) {
     this.expressApp = express();
     this.middleware();
 
-    this.Tutorials      = new TutorialModel(mongoDBConnection);
-    this.Comments       = new CommentModel(mongoDBConnection);
+    this.Tutorials = new TutorialModel(mongoDBConnection);
+    this.Comments = new CommentModel(mongoDBConnection);
     this.CommunityNotes = new CommunityNoteModel(mongoDBConnection);
 
     Promise.all([
