@@ -9,9 +9,6 @@ const dbUser = process.env.DB_USER;
 const dbPassword = process.env.DB_PASSWORD;
 const dbProtocol = process.env.DB_PROTOCOL || 'mongodb://';
 const dbInfo = process.env.DB_INFO || `127.0.0.1:${dbPort}/tutorialPlatform`;
-if (!port) {
-    throw new Error("PORT environment variable is not set");
-}
 let mongoDBConnection = 'mongodb://' + process.env.DB_INFO;
 if (dbUser && dbPassword) {
     mongoDBConnection = `${dbProtocol}${dbUser}:${dbPassword}@${dbInfo}`;
