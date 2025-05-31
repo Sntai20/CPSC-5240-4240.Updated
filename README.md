@@ -48,7 +48,7 @@ Select your operating system to start the MongoDB client:
 Run the database client on Windows.
 
 ```powershell
-. ./startDbClient.admin.cmd
+mongosh --port 3000 --authenticationDatabase admin
 ```
 
 </details>
@@ -190,6 +190,38 @@ The following command removes the database files, the node_modules directory, an
 npm run clean --workspace=expressServer
 ```
 
+## Install MongoDB shell
+
+Select your operating system to install the MongoDB shell.
+
+<details>
+<summary>Windows</summary>
+
+Install the MongoDB shell on Windows using winget.
+
+```powershell
+winget install -e --id MongoDB.Shell
+```
+
+</details>
+
+<details>
+<summary>Linux/Mac</summary>
+
+Install the MongoDB shell on Linux/Mac using brew.
+
+```bash
+brew install mongosh
+```
+
+</details>
+
+## Connect to the database
+
+```bash
+mongosh "mongodb+srv://tutorialplatformcluster.utubbq2.mongodb.net/" --apiVersion 1 --username dbAdmin --password test
+```
+
 ## Project Structure
 
 The expressServer project uses a standard Node.js REST API project structure.
@@ -231,36 +263,4 @@ Repository-Root/
 ├── startDbClient.PopulateSampleData.cmd
 ├── .gitignore
 └── README.md
-```
-
-## Install MongoDB shell
-
-Select your operating system to install the MongoDB shell.
-
-<details>
-<summary>Windows</summary>
-
-Install the MongoDB shell on Windows using winget.
-
-```powershell
-winget install -e --id MongoDB.Shell
-```
-
-</details>
-
-<details>
-<summary>Linux/Mac</summary>
-
-Install the MongoDB shell on Linux/Mac using brew.
-
-```bash
-brew install mongosh
-```
-
-</details>
-
-## Connect to the database
-
-```bash
-mongosh "mongodb+srv://tutorialplatformcluster.utubbq2.mongodb.net/" --apiVersion 1 --username dbAdmin --password test
 ```
