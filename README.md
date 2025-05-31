@@ -262,5 +262,5 @@ brew install mongosh
 ## Connect to the database
 
 ```bash
-mongosh "mongodb+srv://tutorialplatformcluster.utubbq2.mongodb.net/" --apiVersion 1 --username asantana1 --password ECcuTkfuVcXZyu38
+mongosh "mongodb+srv://tutorialplatformcluster.utubbq2.mongodb.net/" --apiVersion 1 --username dbAdmin --password test
 ```
