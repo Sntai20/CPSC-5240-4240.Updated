@@ -216,7 +216,7 @@ brew install mongosh
 
 </details>
 
-## Connect to the database
+## Connect to the Azure Mongo database
 
 ```bash
 mongosh "mongodb+srv://tutorialplatformcluster.utubbq2.mongodb.net/" --apiVersion 1 --username dbAdmin --password test
