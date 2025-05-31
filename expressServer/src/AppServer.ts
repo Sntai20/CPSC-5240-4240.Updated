@@ -4,7 +4,7 @@ import { App } from './App';
 dotenv.config();
 
 const port = process.env.PORT || 8080;
-const dbPort = process.env.PORT || 3000;
+const dbPort = 3000;
 const dbUser = process.env.DB_USER;
 const dbPassword = process.env.DB_PASSWORD;
 const dbProtocol = process.env.DB_PROTOCOL || 'mongodb://';
