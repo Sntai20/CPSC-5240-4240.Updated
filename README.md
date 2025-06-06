@@ -259,8 +259,6 @@ Repository-Root/
 ├── package.json
 ├── start.DbServer.cmd
 ├── start.DbServer.sh
-├── startDbClient.admin.cmd
-├── startDbClient.PopulateSampleData.cmd
 ├── .gitignore
 └── README.md
 ```
