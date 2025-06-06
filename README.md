@@ -48,7 +48,7 @@ Select your operating system to start the MongoDB client:
 Run the database client on Windows.
 
 ```powershell
-. ./startDbClient.admin.cmd
+mongosh --port 3000 --authenticationDatabase admin
 ```
 
 </details>
@@ -146,7 +146,7 @@ The following command runs the node server on port 8080.
 npm run start --workspace=expressServer
 ```
 
-## FrontEnd
+## Frontend
 
 Starting from the `repository root` directory, install npm packages, compile the Angular server, run the unit tests, and run the Angular server.
 
@@ -188,6 +188,38 @@ The following command removes the database files, the node_modules directory, an
 
 ```bash
 npm run clean --workspace=expressServer
+```
+
+## Install MongoDB shell
+
+Select your operating system to install the MongoDB shell.
+
+<details>
+<summary>Windows</summary>
+
+Install the MongoDB shell on Windows using winget.
+
+```powershell
+winget install -e --id MongoDB.Shell
+```
+
+</details>
+
+<details>
+<summary>Linux/Mac</summary>
+
+Install the MongoDB shell on Linux/Mac using brew.
+
+```bash
+brew install mongosh
+```
+
+</details>
+
+## Connect to the Azure Mongo database
+
+```bash
+mongosh "mongodb+srv://tutorialplatformcluster.utubbq2.mongodb.net/" --apiVersion 1 --username dbAdmin --password test
 ```
 
 ## Project Structure

@@ -3,12 +3,15 @@ import { App } from './App';
 
 dotenv.config();
 
-const port = process.env.PORT;
+const port = process.env.PORT || 8080;
+const dbPort = 3000;
 const dbUser = process.env.DB_USER;
 const dbPassword = process.env.DB_PASSWORD;
+const dbProtocol = process.env.DB_PROTOCOL || 'mongodb://';
+const dbInfo = process.env.DB_INFO || `127.0.0.1:${dbPort}/tutorialPlatform`;
 let mongoDBConnection = 'mongodb://' + process.env.DB_INFO;
 if (dbUser && dbPassword) {
-    mongoDBConnection = 'mongodb://' + dbUser + ':' + encodeURIComponent(dbPassword) + '@' + process.env.DB_INFO;
+    mongoDBConnection = `${dbProtocol}${dbUser}:${dbPassword}@${dbInfo}`;
 }
 console.log("server db connection URL " + mongoDBConnection);
 

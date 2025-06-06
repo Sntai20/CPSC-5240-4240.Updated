@@ -20,8 +20,7 @@
     "e2etest": "mocha -r ts-node/register test/integration/**/*.test.ts",
     "alltest": "mocha -r ts-node/register test/**/**/*.test.ts",
     "start": "node out/src/AppServer.js",
-    "build": "rimraf out/src/pages && tsc && npm run copy-pages",
-    "copy-pages": "copyfiles -u 2 src/pages/**/* out/src/pages",
+    "build": "tsc",
     "clean": "rimraf out node_modules"
   },
   "author": "",
