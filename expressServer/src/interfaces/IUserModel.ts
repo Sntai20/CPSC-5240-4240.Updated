@@ -1,5 +1,3 @@
-import { UUID } from 'crypto';
-import { IntegerType } from 'mongodb';
 import * as Mongoose from 'mongoose';
 
 export interface IUser {

@@ -25,7 +25,7 @@ class UserModel {
       {
         collection: 'users',
         timestamps: { createdAt: 'createdDate', updatedAt: 'updatedDate' }
-      }
+        }
     );
   }
 
@@ -79,7 +79,7 @@ class UserModel {
   
   public async retrieveAllUsers(response: any): Promise<void> {
     try {
-        const users = await this.model.find().exec();
+        const users = await this.model.find().select('username email points createdDate updatedDate').exec();
         response.json(users);
     } catch (error) {
         response.status(500).json({ message: 'Error retrieving users', error });
