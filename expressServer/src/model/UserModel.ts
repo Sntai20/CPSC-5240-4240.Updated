@@ -6,7 +6,7 @@ import { v4 as uuidv4 } from 'uuid';
 class UserModel {
   public schema: Mongoose.Schema;
   public model: Mongoose.Model<IUserModel>;
-  public dbConnectionString: string;
+  private dbConnectionString: string;
 
   constructor(DB_CONNECTION_STRING: string) {
     this.dbConnectionString = DB_CONNECTION_STRING;
@@ -24,7 +24,7 @@ class UserModel {
       },
       {
         collection: 'users',
-        timestamps: { createdAt: 'createdAt', updatedAt: 'updatedAt' }
+        timestamps: { createdAt: 'createdDate', updatedAt: 'updatedDate' }
       }
     );
   }
@@ -48,7 +48,7 @@ class UserModel {
       delete userData.password;
       const newUser = new this.model(userData);
       const result = await newUser.save();
-      response.status(201).json({username: result.username, email: result.email, createdAt: result.createdAt});
+      response.status(201).json({username: result.username, email: result.email, createdDate: result.createdDate});
     } catch (err) {
       console.error('User creation failed:', err);
       response.status(400).json({ message: 'Error creating user', error: err });

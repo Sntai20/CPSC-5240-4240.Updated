@@ -1,3 +1,5 @@
+import { UUID } from 'crypto';
+import { IntegerType } from 'mongodb';
 import * as Mongoose from 'mongoose';
 
 export interface IUser {
@@ -5,8 +7,9 @@ export interface IUser {
   username: string;
   email: string;
   hashed_pwd: string;
-  createdAt: Date;
-  updatedAt: Date;
+  points: number;
+  createdDate: Date;
+  updatedDate: Date;
 }
 
 export interface IUserModel extends Mongoose.Document, IUser {}

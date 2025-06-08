@@ -42,7 +42,7 @@ userList = [
     createdDate: new Date('2025-02-01'),
     updatedDate: new Date('2025-02-02')
   },
-  {
+  { 
     userId: user3Id,
     username: 'techie_guru',
     email: 'guru@example.com',
