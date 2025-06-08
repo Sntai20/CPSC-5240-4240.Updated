@@ -31,6 +31,7 @@ userList = [
     username: 'diy_life98',
     email: 'diy_life98@example.com',
     hashed_pwd: 'bmWd6qhYQs2rtcYwX8xAAzukN3LsANRcKjySF0Gl43c=', // 'mypassword123'
+    points: 20,
     createdDate: new Date('2025-02-07'),
     updatedDate: new Date('2025-02-12')
   },
@@ -39,6 +40,7 @@ userList = [
     username: 'quickFix01',
     email: 'quickfix@example.com',
     hashed_pwd: '++gWkkl9tUjlVQTNWFCvEJhb5Aa9iEzkFpie1cbag3I=', // 'fixitfast456'
+    points: 50,
     createdDate: new Date('2025-02-01'),
     updatedDate: new Date('2025-02-02')
   },
@@ -47,6 +49,7 @@ userList = [
     username: 'techie_guru',
     email: 'guru@example.com',
     hashed_pwd: 'qPEc0+HsctOJa9B5y+nR1rHhAO5bMGq4mHkG6jZBYeI=', // 'gurupass789',
+    points: 100,
     createdDate: new Date('2024-12-29'),
     updatedDate: new Date('2025-01-23')
   },
@@ -55,6 +58,7 @@ userList = [
     username: 'code_master',
     email: 'codemaster@example.com',
     hashed_pwd: 'UpQVmiAESe39xvmzzfyuuTs2LEDqDDBD5KqBoPpMJ5c=', // 'mastercode007',
+    points: 40,
     createdDate: new Date('2024-11-05'),
     updatedDate: new Date('2025-04-07')
   },
@@ -62,6 +66,7 @@ userList = [
     userId: user5Id,
     username: 'frontend_queen',
     email: 'queen@example.com',
+    points: 10,
     hashed_pwd: 'oXcBK0C0xObzuh7ORdHKm6XELtZcUCRMHGXjqL35zAQ=', // 'frontend_queen',
     createdDate: new Date('2025-01-03'),
     updatedDate: new Date('2025-01-14')

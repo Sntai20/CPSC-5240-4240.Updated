@@ -21,6 +21,7 @@ class UserModel {
         username: { type: String, required: true, unique: true },
         email: { type: String, required: true },
         hashed_pwd: { type: String, required: true },
+        points: {type: Number, required: true}
       },
       {
         collection: 'users',
