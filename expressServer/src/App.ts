@@ -49,6 +49,10 @@ class App {
     this.expressApp.use('/', tutorialRoutes(this.Tutorials));
     this.expressApp.use('/', commentRoutes(this.Comments));
     this.expressApp.use('/', communityNotesRoutes(this.CommunityNotes));
+
+    this.expressApp.use('/app/json/', express.static(__dirname + '/app/json'));
+    this.expressApp.use('/', express.static(__dirname + '/dist'));
+
   }
 }
 
