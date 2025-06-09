@@ -6,12 +6,15 @@ import { CommunityNoteModel } from './model/CommunityNoteModel';
 import { tutorialRoutes } from './routes/tutorialRoutes';
 import { commentRoutes } from './routes/commentRoutes';
 import { communityNotesRoutes } from './routes/communityNotesRoutes';
+import { UserModel } from './model/UserModel';
+import { userRoutes } from './routes/userRoutes';
 
 class App {
   public expressApp: express.Application;
   public Tutorials: TutorialModel;
   public Comments: CommentModel;
   public CommunityNotes: CommunityNoteModel;
+  public Users: UserModel;
 
   constructor(mongoDBConnection: string) {
     this.expressApp = express();
@@ -20,6 +23,7 @@ class App {
     this.Tutorials = new TutorialModel(mongoDBConnection);
     this.Comments = new CommentModel(mongoDBConnection);
     this.CommunityNotes = new CommunityNoteModel(mongoDBConnection);
+    this.Users = new UserModel(mongoDBConnection);
 
     Promise.all([
       this.Tutorials.createModel(),
@@ -49,6 +53,7 @@ class App {
     this.expressApp.use('/', tutorialRoutes(this.Tutorials));
     this.expressApp.use('/', commentRoutes(this.Comments));
     this.expressApp.use('/', communityNotesRoutes(this.CommunityNotes));
+    this.expressApp.use('/', userRoutes(this.Users));
 
     this.expressApp.use('/app/json/', express.static(__dirname + '/app/json'));
     this.expressApp.use('/', express.static(__dirname + '/dist'));
