@@ -1,5 +1,7 @@
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
+import * as path from 'path';
+
 import { TutorialModel } from './model/TutorialModel';
 import { CommentModel } from './model/CommentModel';
 import { CommunityNoteModel } from './model/CommunityNoteModel';
@@ -55,8 +57,15 @@ class App {
     this.expressApp.use('/', communityNotesRoutes(this.CommunityNotes));
     this.expressApp.use('/', userRoutes(this.Users));
 
-    this.expressApp.use('/app/json/', express.static(__dirname + '/app/json'));
-    this.expressApp.use('/', express.static(__dirname + '/dist'));
+    //this.expressApp.use('/app/json/', express.static(__dirname + '/app/json'));
+    //this.expressApp.use('/', express.static(__dirname + '/dist'));
+     // Serve Angular static files
+    this.expressApp.use(express.static(path.join(__dirname, 'dist')));
+
+    // Fallback: redirect all unmatched routes to Angular
+    this.expressApp.get('*', (req, res) => {
+      res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+    });
 
   }
 }
