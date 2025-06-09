@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>How-to - Home</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons (for icons) -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Unified Navigation Bar and Header -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light py-3">
+        <div class="container">
+            <!-- Welcome Message -->
+            <span class="navbar-text font-weight-bold text-dark" style="font-size: 1.5rem;">
+                Welcome to How-to Tutorial Platform
+            </span>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="btn btn-primary text-white mr-3" href="#">CREATE</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Affiliates</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="fas fa-user-circle"></i> user1
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Search Bar Section -->
+    <section class="search-bar py-4 bg-light">
+        <div class="container text-center">
+            <input type="text" class="form-control w-50 mx-auto" id="searchInput" placeholder="Search Tutorials..." />
+            <button class="btn btn-primary mt-3" onclick="searchTutorial()">Search</button>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">Browse by Categories</h2>
+            <div class="row">
+                <!-- Category Card 1: Plumbing -->
+                <div class="col-md-3 mb-4">
+                    <div class="card">
+                        <img src="plumbing.jpeg" class="card-img-top" alt="Plumbing">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Plumbing</h5>
+                            <p class="card-text">Fix leaks, install pipes, and handle basic plumbing tasks.</p>
+                            <a href="#" class="btn btn-info">Browse Tutorials</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Category Card 2: Furniture -->
+                <div class="col-md-3 mb-4">
+                    <div class="card">
+                        <img src="furniture.png" class="card-img-top" alt="Furniture">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Furniture</h5>
+                            <p class="card-text">Learn to assemble, repair, and restore home furniture.</p>
+                            <a href="#" class="btn btn-info">Browse Tutorials</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Category Card 3: Technology -->
+                <div class="col-md-3 mb-4">
+                    <div class="card">
+                        <img src="technology.png" class="card-img-top" alt="Technology">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Technology</h5>
+                            <p class="card-text">Explore how-to guides on gadgets, software, and digital tools.</p>
+                            <a href="#" class="btn btn-info">Browse Tutorials</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Category Card 4: Electronics -->
+                <div class="col-md-3 mb-4">
+                    <div class="card">
+                        <img src="electic.png" class="card-img-top" alt="Electronics">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Electronics</h5>
+                            <p class="card-text">Repair devices, work with circuits, and understand electronics.</p>
+                            <a href="#" class="btn btn-info">Browse Tutorials</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="bg-dark text-white py-4 text-center">
+        <p>&copy; 2025 How-To Tutorial Platform. All rights reserved.</p>
+    </footer>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Custom JS -->
+    <script>
+        // Function to handle the search (for demonstration purposes)
+        function searchTutorial() {
+            const searchTerm = document.getElementById('searchInput').value;
+            if (searchTerm) {
+                alert(`Searching for tutorials related to: ${searchTerm}`);
+            } else {
+                alert('Please enter a search term');
+            }
+        }
+    </script>
+</body>
+</html>
