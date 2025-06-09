@@ -1,7 +1,6 @@
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
 import * as path from 'path';
-
 import { TutorialModel } from './model/TutorialModel';
 import { CommentModel } from './model/CommentModel';
 import { CommunityNoteModel } from './model/CommunityNoteModel';
@@ -21,12 +20,11 @@ class App {
   constructor(mongoDBConnection: string) {
     this.expressApp = express();
     this.middleware();
-
     this.Tutorials = new TutorialModel(mongoDBConnection);
     this.Comments = new CommentModel(mongoDBConnection);
     this.CommunityNotes = new CommunityNoteModel(mongoDBConnection);
     this.Users = new UserModel(mongoDBConnection);
-
+    
     Promise.all([
       this.Tutorials.createModel(),
       this.Comments.createModel(),
@@ -52,19 +50,29 @@ class App {
   }
 
   private routes(): void {
+    // Your existing API routes (they already have /app/ built in)
     this.expressApp.use('/', tutorialRoutes(this.Tutorials));
     this.expressApp.use('/', commentRoutes(this.Comments));
     this.expressApp.use('/', communityNotesRoutes(this.CommunityNotes));
     this.expressApp.use('/', userRoutes(this.Users));
 
-    // Serve static files from Angular build (browser subdirectory)
-    this.expressApp.use(express.static(path.join(__dirname, '../public/browser')));
+    // Serve static files from the dist directory (where Angular build files are)
+    const staticPath = path.join(__dirname, '../dist');
+    console.log('Serving static files from:', staticPath);
+    this.expressApp.use(express.static(staticPath));
 
     // Handle Angular routing - serve index.html for all non-API routes
     this.expressApp.get('*', (req, res) => {
-      res.sendFile(path.join(__dirname, '../public/browser/index.html'));
+      const indexPath = path.join(__dirname, '../dist/index.html');
+      console.log('Serving index.html from:', indexPath);
+      res.sendFile(indexPath, (err) => {
+        if (err) {
+          console.error('Error serving index.html:', err);
+          res.status(500).send('Error loading application');
+        }
+      });
     });
-
   }
 }
+
 export { App };
