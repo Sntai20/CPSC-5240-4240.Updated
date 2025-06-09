@@ -57,29 +57,22 @@ class App {
     this.expressApp.use('/', communityNotesRoutes(this.CommunityNotes));
     this.expressApp.use('/', userRoutes(this.Users));
 
-    // Serve static files from the dist directory (where Angular build files are)
-    //const staticPath = path.join(__dirname, '../dist');
-    //console.log('Serving static files from:', staticPath);
-    //this.expressApp.use('/',express.static(__dirname+'/dist'));
+    // Serve static files from the dist directory
+    // Since your app.ts is in src/ and dist/ is at the same level as src/
+    const distPath = path.join(__dirname, '../dist');
+    console.log('Serving static files from:', distPath);
+    this.expressApp.use('/', express.static(distPath));
 
     // Handle Angular routing - serve index.html for all non-API routes
-    //this.expressApp.get('*', (req, res) => {
-    //  const indexPath = path.join(__dirname, '../dist/index.html');
-    //  console.log('Serving index.html from:', indexPath);
-    //  res.sendFile(indexPath, (err) => {
-    //    if (err) {
-    //      console.error('Error serving index.html:', err);
-    //      res.status(500).send('Error loading application');
-    //    }
-    //  });
-    //});
-    // Serve static files from the Angular build output
-    const angularDistPath = path.join(__dirname, '../../tutorial-application/dist/tutorial-application');
-    this.expressApp.use('/', express.static(angularDistPath));
-
-    // Fallback: serve index.html for all non-API routes
     this.expressApp.get('*', (req, res) => {
-      res.sendFile(path.join(angularDistPath, 'index.html'));
+      const indexPath = path.join(distPath, 'index.html');
+      console.log('Serving index.html from:', indexPath);
+      res.sendFile(indexPath, (err) => {
+        if (err) {
+          console.error('Error serving index.html:', err);
+          res.status(500).send('Error loading application');
+        }
+      });
     });
   }
 }
