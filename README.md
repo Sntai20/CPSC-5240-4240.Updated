@@ -222,6 +222,14 @@ brew install mongosh
 mongosh "mongodb+srv://tutorialplatformcluster.utubbq2.mongodb.net/" --apiVersion 1 --username dbAdmin --password test
 ```
 
+## Azure
+
+```bash
+git remote remove azure
+git remote add azure https://tutorialplatformmac-f0e4a3faemd4b4e5.scm.westus-01.azurewebsites.net:443/tutorialplatformmac.git
+git push azure personal/ansantan/Step-Up-PR5:master
+```
+
 ## Project Structure
 
 The expressServer project uses a standard Node.js REST API project structure.
