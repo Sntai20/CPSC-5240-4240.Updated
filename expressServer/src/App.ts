@@ -60,7 +60,7 @@ class App {
     // Serve static files from the dist directory (where Angular build files are)
     //const staticPath = path.join(__dirname, '../dist');
     //console.log('Serving static files from:', staticPath);
-    this.expressApp.use('/',express.static(__dirname+'/dist'));
+    //this.expressApp.use('/',express.static(__dirname+'/dist'));
 
     // Handle Angular routing - serve index.html for all non-API routes
     //this.expressApp.get('*', (req, res) => {
@@ -73,6 +73,14 @@ class App {
     //    }
     //  });
     //});
+    // Serve static files from the Angular build output
+    const angularDistPath = path.join(__dirname, '../../tutorial-application/dist/tutorial-application');
+    this.expressApp.use('/', express.static(angularDistPath));
+
+    // Fallback: serve index.html for all non-API routes
+    this.expressApp.get('*', (req, res) => {
+      res.sendFile(path.join(angularDistPath, 'index.html'));
+    });
   }
 }
 
