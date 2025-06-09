@@ -57,10 +57,12 @@ class App {
     this.expressApp.use('/', communityNotesRoutes(this.CommunityNotes));
     this.expressApp.use('/', userRoutes(this.Users));
 
-    this.expressApp.use(express.static(path.join(__dirname, '../public')));
+    // Serve static files from Angular build (browser subdirectory)
+    this.expressApp.use(express.static(path.join(__dirname, '../public/browser')));
 
+    // Handle Angular routing - serve index.html for all non-API routes
     this.expressApp.get('*', (req, res) => {
-      res.sendFile(path.join(__dirname, '../public', 'index.html'));
+      res.sendFile(path.join(__dirname, '../public/browser/index.html'));
     });
 
   }
