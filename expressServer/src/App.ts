@@ -41,6 +41,7 @@ class App {
     this.expressApp.use(bodyParser.urlencoded({ extended: false }));
     this.expressApp.use((req, res, next) => {
       res.header('Access-Control-Allow-Origin', '*');
+      res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
       res.header(
         'Access-Control-Allow-Headers',
         'Origin, X-Requested-With, Content-Type, Accept'
@@ -57,21 +58,21 @@ class App {
     this.expressApp.use('/', userRoutes(this.Users));
 
     // Serve static files from the dist directory (where Angular build files are)
-    const staticPath = path.join(__dirname, '../dist');
-    console.log('Serving static files from:', staticPath);
-    this.expressApp.use(express.static(staticPath));
+    //const staticPath = path.join(__dirname, '../dist');
+    //console.log('Serving static files from:', staticPath);
+    this.expressApp.use('/',express.static(__dirname+'/dist'));
 
     // Handle Angular routing - serve index.html for all non-API routes
-    this.expressApp.get('*', (req, res) => {
-      const indexPath = path.join(__dirname, '../dist/index.html');
-      console.log('Serving index.html from:', indexPath);
-      res.sendFile(indexPath, (err) => {
-        if (err) {
-          console.error('Error serving index.html:', err);
-          res.status(500).send('Error loading application');
-        }
-      });
-    });
+    //this.expressApp.get('*', (req, res) => {
+    //  const indexPath = path.join(__dirname, '../dist/index.html');
+    //  console.log('Serving index.html from:', indexPath);
+    //  res.sendFile(indexPath, (err) => {
+    //    if (err) {
+    //      console.error('Error serving index.html:', err);
+    //      res.status(500).send('Error loading application');
+    //    }
+    //  });
+    //});
   }
 }
 
