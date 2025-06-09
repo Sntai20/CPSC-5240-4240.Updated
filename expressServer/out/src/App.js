@@ -40,7 +40,7 @@ class App {
         this.expressApp.use('/', (0, commentRoutes_1.commentRoutes)(this.Comments));
         this.expressApp.use('/', (0, communityNotesRoutes_1.communityNotesRoutes)(this.CommunityNotes));
         // Serve static files from the dist directory.
-        this.expressApp.use('/', express.static(__dirname + '/../dist'));
+        this.expressApp.use('/', express.static(__dirname + '/dist'));
     }
 }
 exports.App = App;
