@@ -5,7 +5,7 @@ class TutorialModel {
     public schema: any;
     public stepsSchema: any;
     public model: any;
-    public dbConnectionString: string;
+    private dbConnectionString: string;
 
     public constructor(DB_CONNECTION_STRING: string) {
         this.dbConnectionString = DB_CONNECTION_STRING;
