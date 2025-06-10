@@ -73,7 +73,8 @@ function userRoutes(Users) {
                     console.log("Redirecting to Angular frontend...");
                     console.log("Setting user id in cache -- ", dbUser.userId);
                     // Redirect to frontend with user information
-                    return res.redirect(`http://localhost:4200/#/?userId=${dbUser.userId}&username=${encodeURIComponent(dbUser.username)}`);
+                    return res.redirect(`http://localhost:8080/welcome/?userId=${dbUser.userId}&username=${encodeURIComponent(dbUser.username)}`);
+                    // return res.redirect(`http:///welcome/?userId=${dbUser.userId}&username=${encodeURIComponent(dbUser.username)}`);
                 }
                 catch (e) {
                     console.error("Error handling user:", e);

@@ -1,5 +1,7 @@
 # HowTo Website
 
+Node version >= 22 is used for this project.
+
 1. Run and seed the Mongo database with sample data.
 1. Build and run the Backend API.
 1. Build and run the Frontend.
@@ -224,11 +226,30 @@ mongosh "mongodb+srv://tutorialplatformcluster.utubbq2.mongodb.net/" --apiVersio
 
 ## Azure
 
+### Prerequisites
+
+- Update the .env file to use Azure.
+- Comment out the .gitignore /dist and **/[Oo]ut/* entries.
+
+### Publish application to Azure
+
+Starting from the `repository root` directory, run the following commands to install npm packages, compile the node server, compile the angular server, run the backend and frontend.
+
+- Compile and move the tutorial-application/dist folder and contents to expressServer/src/dist
+- Add the remote link to the App Service, then push the committed changes in the branch to the master branch used by the App Service.
+
 ```bash
-git remote remove azure
+npm install
+npm run build
+
 git remote add azure https://tutorialplatformmac-f0e4a3faemd4b4e5.scm.westus-01.azurewebsites.net:443/tutorialplatformmac.git
 git push azure personal/ansantan/Step-Up-PR5:master
 ```
+
+### Clean up
+
+- Update the .env file to use local.
+- Uncomment the .gitignore /dist and **/[Oo]ut/* entries.
 
 ## Project Structure
 
@@ -267,8 +288,6 @@ Repository-Root/
 ├── package.json
 ├── start.DbServer.cmd
 ├── start.DbServer.sh
-├── startDbClient.admin.cmd
-├── startDbClient.PopulateSampleData.cmd
 ├── .gitignore
 └── README.md
 ```
