@@ -236,7 +236,7 @@ mongosh "mongodb+srv://tutorialplatformcluster.utubbq2.mongodb.net/" --apiVersio
 Starting from the `repository root` directory, run the following commands to install npm packages, compile the node server, compile the angular server, run the backend and frontend.
 
 - Compile and move the tutorial-application/dist folder and contents to expressServer/src/dist
-- Add the remote link to the App Service, then push the committed changes in the branch to the master branch used by the App Service. 
+- Add the remote link to the App Service, then push the committed changes in the branch to the master branch used by the App Service.
 
 ```bash
 npm install
