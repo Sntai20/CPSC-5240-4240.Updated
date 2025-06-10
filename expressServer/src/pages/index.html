@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,53 +13,23 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-    <!-- Unified Navigation Bar and Header -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light py-3">
-        <div class="container">
-            <!-- Welcome Message -->
-            <span class="navbar-text font-weight-bold text-dark" style="font-size: 1.5rem;">
-                Welcome to How-to Tutorial Platform
-            </span>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="btn btn-primary text-white mr-3" href="#">CREATE</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Affiliates</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <i class="fas fa-user-circle"></i> user1
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
 
-    <!-- Search Bar Section -->
-    <section class="search-bar py-4 bg-light">
-        <div class="container text-center">
-            <input type="text" class="form-control w-50 mx-auto" id="searchInput" placeholder="Search Tutorials..." />
-            <button class="btn btn-primary mt-3" onclick="searchTutorial()">Search</button>
-        </div>
-    </section>
+<body>
+
+    <div class="jb-body position-relative p-5 text-center text-muted border border-dashed rounded-5">
+        <h1>Welcome to HOWTO - The Tutorial Site for you!!</h1>
+        <p>Manage your tutorials list efficiently.</p>
+        <p>
+            <button (click)="loginWithSSO()" class="btn btn-lg bt-body" role="button">
+                Log In SSO
+            </button>
+        </p>
+    </div>
 
     <!-- Categories Section -->
     <section class="categories py-5">
         <div class="container">
-            <h2 class="text-center mb-4">Browse by Categories</h2>
+            <h2 class="text-center mb-4">Browse by Categories</h2>s
             <div class="row">
                 <!-- Category Card 1: Plumbing -->
                 <div class="col-md-3 mb-4">
@@ -131,4 +102,5 @@
         }
     </script>
 </body>
+
 </html>
