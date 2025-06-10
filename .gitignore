@@ -422,10 +422,9 @@ Thumbs.db
 # Ignore all Javascript files in the src directory
 src/**/*.js*
 
-# Ignore build and temporary output files
+# Ignore compiled output
+# To deploy the compiled output to Azure, comment the next two lines (**/[Oo]ut/* and **/dist) if you want to checkin the compiled output.
 **/[Oo]ut/*
-
-# Compiled output
 **/dist
 **/tmp
 **/out-tsc
