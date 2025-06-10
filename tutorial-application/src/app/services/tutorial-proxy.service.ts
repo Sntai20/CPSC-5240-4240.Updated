@@ -6,7 +6,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class TutorialProxyService {
-  hostUrl: string = 'http://localhost:8080/app/';
+  // hostUrl: string = 'http://localhost:8080/app/';
+  hostUrl: string = 'https://tutorialplatformmac-f0e4a3faemd4b4e5.westus-01.azurewebsites.net/app/';
 
   constructor(private httpClient: HttpClient) { }
 
