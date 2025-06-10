@@ -5,7 +5,7 @@ const expect = chai.expect;
  
 chai.use(chaiHttp);
  
-const AZURE_API_URL = 'https://tutorialplatformmac-f0e4a3faemd4b4e5.westus-01.azurewebsites.net'; 
+const AZURE_API_URL = 'http://tutorialplatformmac-f0e4a3faemd4b4e5.westus-01.azurewebsites.net'; 
  
 describe('Azure API Unprotected Endpoints (E2E)', () => {
 
@@ -18,11 +18,14 @@ describe('Azure API Unprotected Endpoints (E2E)', () => {
     expect(res).to.have.status(200);
     expect(res.body).to.be.an('array');
 
-    if (res.body.length > 0) {
-      expect(res.body[0]).to.have.property('tutorialId');
-      expect(res.body[0]).to.have.property('title');
+    for (const item of res.body) {
+      expect(item).to.have.property('tutorialId');
+      expect(item).to.have.property('title');
+      expect(item).to.have.property('text');
+      expect(item).to.have.property('published');
+      expect(item).to.have.property('authorName');
+      expect(item).to.have.property('category');
     }
-
   });
  
   // 2. HTTP POST Single
@@ -32,7 +35,7 @@ describe('Azure API Unprotected Endpoints (E2E)', () => {
       title: 'Azure Test Tutorial',
       text: 'This is a test tutorial for Azure endpoint.',
       authorName: 'Azure Tester',
-      authorId: 'Some authorID',
+      authorId: 'authorID005',
       category: 'azure'
     };
 
@@ -43,8 +46,12 @@ describe('Azure API Unprotected Endpoints (E2E)', () => {
     expect(res).to.have.status(201);
     expect(res.body).to.include({ title: payload.title });
     expect(res.body).to.have.property('tutorialId');
+    expect(res.body).to.have.property('title');
+    expect(res.body).to.have.property('category');
+    expect(res.body).to.have.property('text');
+    expect(res.body).to.have.property('authorName');
+    expect(res.body).to.have.property('authorId');
     createdId = res.body.tutorialId;
-
   });
  
   // 3. HTTP GET Single
@@ -55,7 +62,10 @@ describe('Azure API Unprotected Endpoints (E2E)', () => {
     expect(res).to.have.status(200);
     expect(res.body).to.have.property('tutorialId', createdId);
     expect(res.body).to.have.property('title');
-
+    expect(res.body).to.have.property('category');
+    expect(res.body).to.have.property('text');
+    expect(res.body).to.have.property('published');
+    expect(res.body).to.have.property('authorName');
   });
 
 });
