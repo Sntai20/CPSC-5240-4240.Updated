@@ -18,9 +18,10 @@ class UserModel {
     this.schema = new Mongoose.Schema(
       {
         userId: { type: String, default: () => uuidv4().replace(/-/g, ''), unique: true },
+        googleId: {type: String, required: true},
         username: { type: String, required: true, unique: true },
         email: { type: String, required: true },
-        hashed_pwd: { type: String, required: true },
+        hashed_pwd: { type: String },
         points: {type: Number, required: true}
       },
       {
