@@ -76,9 +76,11 @@ export function userRoutes(Users: UserModel) {
           console.log("Setting user id in cache -- ", dbUser.userId);
           
           // Redirect to frontend with user information
-          // return res.redirect(`https://localhost:8080/welcome/?userId=${dbUser.userId}&username=${encodeURIComponent(dbUser.username)}`);
-          return res.redirect(`https://tutorialplatformmac-f0e4a3faemd4b4e5.westus-01.azurewebsites.net/welcome/?userId=${dbUser.userId}&username=${encodeURIComponent(dbUser.username)}`);
-          
+          // local testing Ang return res.redirect(`http://localhost:4200/#/?userId=${dbUser.userId}&username=${encodeURIComponent(dbUser.username)}`);
+          // local testing with expressServer return res.redirect(`http://localhost:8080/?userId=${dbUser.userId}&username=${encodeURIComponent(dbUser.username)}`);
+          // local testing with expressServer return res.redirect(`https://localhost:8080/?userId=${dbUser.userId}&username=${encodeURIComponent(dbUser.username)}`);
+          // return res.redirect(`https://tutorialplatformmac-f0e4a3faemd4b4e5.westus-01.azurewebsites.net/welcome/?userId=${dbUser.userId}&username=${encodeURIComponent(dbUser.username)}`);
+           return res.redirect(`https://tutorialplatformmac-f0e4a3faemd4b4e5.westus-01.azurewebsites.net/#/welcome/?userId=${dbUser.userId}&username=${encodeURIComponent(dbUser.username)}`);
         } catch (e) {
           console.error("Error handling user:", e);
           return res.redirect('/?error=database_error');
