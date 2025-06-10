@@ -400,12 +400,33 @@ FodyWeavers.xsd
 # JetBrains Rider
 *.sln.iml
 
-# Mac
+# Mac System files
 .DS_Store
 **/.DS_Store
+Thumbs.db
+
+# Miscellaneous
+**/.angular/cache
+**/.sass-cache
+**/connect.lock
+**/coverage
+**/libpeerconnection.log
+**/testem.log
+**/typings
+
+# Node
+**/node_modules
+**/npm-debug.log
+**/yarn-error.log
 
 # Ignore all Javascript files in the src directory
 src/**/*.js*
 
 # Ignore build and temporary output files
 **/[Oo]ut/*
+
+# Compiled output
+**/dist
+**/tmp
+**/out-tsc
+**/bazel-out
