@@ -76,7 +76,7 @@ export function userRoutes(Users: UserModel) {
           console.log("Setting user id in cache -- ", dbUser.userId);
           
           // Redirect to frontend with user information
-          return res.redirect(`http://localhost:4200/#/?userId=${dbUser.userId}&username=${encodeURIComponent(dbUser.username)}`);
+          return res.redirect(`http://localhost:4200/tutorials?userId=${dbUser.userId}&username=${encodeURIComponent(dbUser.username)}`);
           
         } catch (e) {
           console.error("Error handling user:", e);
