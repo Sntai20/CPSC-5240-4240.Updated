@@ -82,8 +82,8 @@ class App {
     this.expressApp.use('/', communityNotesRoutes(this.CommunityNotes));
     this.expressApp.use('/', userRoutes(this.Users));
 
-    // static pages
-    this.expressApp.use('/', express.static(__dirname + '/pages'));
+    // Serve static files from the dist directory.
+    this.expressApp.use('/', express.static(__dirname + '/dist'));
   }
 }
 

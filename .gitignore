@@ -400,12 +400,32 @@ FodyWeavers.xsd
 # JetBrains Rider
 *.sln.iml
 
-# Mac
+# Mac System files
 .DS_Store
 **/.DS_Store
+Thumbs.db
+
+# Miscellaneous
+**/.angular/cache
+**/.sass-cache
+**/connect.lock
+**/coverage
+**/libpeerconnection.log
+**/testem.log
+**/typings
+
+# Node
+**/node_modules
+**/npm-debug.log
+**/yarn-error.log
 
 # Ignore all Javascript files in the src directory
 src/**/*.js*
 
-# Ignore build and temporary output files
-**/[Oo]ut/*
+# Ignore compiled output
+# To deploy the compiled output to Azure, comment the next two lines (**/[Oo]ut/* and **/dist) if you want to checkin the compiled output.
+# **/[Oo]ut/*
+# **/dist
+**/tmp
+**/out-tsc
+**/bazel-out
