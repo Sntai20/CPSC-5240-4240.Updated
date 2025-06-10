@@ -8,13 +8,7 @@ import { commentRoutes } from './routes/commentRoutes';
 import { communityNotesRoutes } from './routes/communityNotesRoutes';
 import { UserModel } from './model/UserModel';
 import { userRoutes } from './routes/userRoutes';
-//import * as passport from 'passport';
 import GooglePassportObj from './GooglePassport';
-//import * as session from 'express-session';
-//import * as cookieParser from 'cookie-parser';
-import * as cors from 'cors';
-import { Request, Response, NextFunction } from 'express'
-
 
 const passport = require('passport');
 const session = require('express-session');
