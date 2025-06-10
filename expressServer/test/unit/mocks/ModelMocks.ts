@@ -81,4 +81,32 @@ class CommunityNoteModelMock {
     createCommunityNote = sinon.stub().callsFake((res, obj) => res.status(201).json(obj));
 }
 
-export { TutorialModelMock, CommentModelMock, CommunityNoteModelMock };
+class UserModelMock {
+    createModel = sinon.stub().resolves();
+    retrieveAll = sinon.stub().callsFake((res) => res.json([
+        { userId: '1', username: 'User1' },
+        { userId: '2', username: 'User2' },
+        { userId: '3', username: 'User3' }
+    ]));
+    retrieveByID = sinon.stub().callsFake((res, id) => {
+        if (id === '999') {
+            return res.status(404).end();
+        }
+        return res.json({ userId: id, username: 'User' });
+    });
+    createUser = sinon.stub().callsFake((res, obj) => res.status(201).json(obj));
+    updateUser = sinon.stub().callsFake((res, id, obj) => {
+        if (id === '999') {
+            return res.status(404).end();
+        }
+        return res.status(200).json({ userId: id, ...obj });
+    });
+    deleteUser = sinon.stub().callsFake((res, id) => {
+        if (id === '999') {
+            return res.status(404).end();
+        }
+        return res.status(204).end();
+    });
+}
+
+export { TutorialModelMock, CommentModelMock, CommunityNoteModelMock, UserModelMock };
