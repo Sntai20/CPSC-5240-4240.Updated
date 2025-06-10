@@ -11,8 +11,8 @@ const commentRoutes_1 = require("./routes/commentRoutes");
 const communityNotesRoutes_1 = require("./routes/communityNotesRoutes");
 const UserModel_1 = require("./model/UserModel");
 const userRoutes_1 = require("./routes/userRoutes");
-//import * as passport from 'passport';
 const GooglePassport_1 = require("./GooglePassport");
+const cors = require("cors");
 const passport = require('passport');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
@@ -37,16 +37,30 @@ class App {
         });
     }
     middleware() {
+        // CORS configuration - MUST come before other middleware
+        this.expressApp.use(cors({
+            origin: 'http://localhost:4200', // Your Angular app URL
+            credentials: true, // Allow cookies/session to be sent
+            methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+            allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept', 'Authorization']
+        }));
+        // Body parser middleware
         this.expressApp.use(bodyParser.json());
         this.expressApp.use(bodyParser.urlencoded({ extended: false }));
-        this.expressApp.use((req, res, next) => {
-            res.header("Access-Control-Allow-Origin", "*");
-            res.header("Access-Control-Allow-Credentials", "true");
-            res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-            next();
-        });
-        this.expressApp.use(session({ secret: 'keyboard cat' }));
+        // Cookie parser middleware
         this.expressApp.use(cookieParser());
+        // Session middleware - MUST come before passport
+        this.expressApp.use(session({
+            secret: 'your-secret-key-change-this-in-production', // Change this to a secure secret
+            resave: false,
+            saveUninitialized: false,
+            cookie: {
+                secure: false, // Set to true if using HTTPS
+                maxAge: 24 * 60 * 60 * 1000, // 24 hours
+                httpOnly: true // Prevent XSS attacks
+            }
+        }));
+        // Passport middleware - MUST come after session
         this.expressApp.use(passport.initialize());
         this.expressApp.use(passport.session());
     }
@@ -65,7 +79,7 @@ class App {
         this.expressApp.use('/', (0, communityNotesRoutes_1.communityNotesRoutes)(this.CommunityNotes));
         this.expressApp.use('/', (0, userRoutes_1.userRoutes)(this.Users));
         // static pages
-        this.expressApp.use('/', express.static(__dirname + '/pages'));
+        this.expressApp.use('/', express.static(__dirname + '/dist'));
     }
 }
 exports.App = App;

@@ -8,13 +8,9 @@ import { commentRoutes } from './routes/commentRoutes';
 import { communityNotesRoutes } from './routes/communityNotesRoutes';
 import { UserModel } from './model/UserModel';
 import { userRoutes } from './routes/userRoutes';
-//import * as passport from 'passport';
 import GooglePassportObj from './GooglePassport';
-//import * as session from 'express-session';
-//import * as cookieParser from 'cookie-parser';
 import * as cors from 'cors';
 import { Request, Response, NextFunction } from 'express'
-
 
 const passport = require('passport');
 const session = require('express-session');
@@ -52,21 +48,39 @@ class App {
   }
 
   private middleware(): void {
+    // CORS configuration - MUST come before other middleware
+    this.expressApp.use(cors({
+      origin: 'http://localhost:4200', // Your Angular app URL
+      credentials: true, // Allow cookies/session to be sent
+      methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+      allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept', 'Authorization']
+    }));
+
+    // Body parser middleware
     this.expressApp.use(bodyParser.json());
     this.expressApp.use(bodyParser.urlencoded({ extended: false }));
-    this.expressApp.use((req, res, next) => {
-      res.header("Access-Control-Allow-Origin", "*");
-      res.header("Access-Control-Allow-Credentials", "true");
-      res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-      next();
-    });
-    this.expressApp.use(session({ secret: 'keyboard cat' }));
+
+    // Cookie parser middleware
     this.expressApp.use(cookieParser());
+
+    // Session middleware - MUST come before passport
+    this.expressApp.use(session({
+      secret: 'your-secret-key-change-this-in-production', // Change this to a secure secret
+      resave: false,
+      saveUninitialized: false,
+      cookie: {
+        secure: false, // Set to true if using HTTPS
+        maxAge: 24 * 60 * 60 * 1000, // 24 hours
+        httpOnly: true // Prevent XSS attacks
+      }
+    }));
+
+    // Passport middleware - MUST come after session
     this.expressApp.use(passport.initialize());
     this.expressApp.use(passport.session());
   }
 
-   private validateAuth(req, res, next): void {
+  private validateAuth(req: Request, res: Response, next: NextFunction): void {
     if (req.isAuthenticated()) {
       console.log("user is authenticated");
       console.log(JSON.stringify(req.user));
@@ -83,7 +97,7 @@ class App {
     this.expressApp.use('/', userRoutes(this.Users));
 
     // static pages
-    this.expressApp.use('/', express.static(__dirname + '/pages'));
+    this.expressApp.use('/', express.static(__dirname + '/dist'));
   }
 }
 
