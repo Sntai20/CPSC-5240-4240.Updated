@@ -8,6 +8,7 @@ export interface IUser {
   points: number;
   createdDate: Date;
   updatedDate: Date;
+  googleId: string; // Optional field for Google authentication
 }
 
 export interface IUserModel extends Mongoose.Document, IUser {}

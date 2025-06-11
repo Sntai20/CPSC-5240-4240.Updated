@@ -13,11 +13,22 @@
     "lint": "eslint --config eslint.config.mjs \"expressServer/src/**/*.ts\" \"tutorial-application/src/**/*.ts\""
   },
   "devDependencies": {
+    "@types/cookie-parser": "^1.4.9",
+    "@types/express-session": "^1.18.2",
+    "@types/passport": "^1.0.17",
     "@typescript-eslint/eslint-plugin": "^8.32.1",
     "concurrently": "^9.1.2",
     "eslint": "^9.27.0",
     "rimraf": "^6.0.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express-session": "^1.18.1",
+    "passport": "^0.7.0",
+    "passport-google-oauth20-with-people-api": "^2.0.0"
   }
 }

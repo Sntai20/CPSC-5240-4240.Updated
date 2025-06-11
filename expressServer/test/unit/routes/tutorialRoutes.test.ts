@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import * as supertest from 'supertest';
-import { TutorialModelMock, CommentModelMock, CommunityNoteModelMock } from '../mocks/ModelMocks';
+import { TutorialModelMock, CommentModelMock, CommunityNoteModelMock, UserModelMock } from '../mocks/ModelMocks';
 // eslint-disable-next-line @typescript-eslint/no-require-imports
 const proxyquire = require('proxyquire').noCallThru();
 
@@ -9,6 +9,7 @@ const AppPatched = proxyquire('../../../src/App', {
   './model/TutorialModel':{ TutorialModel: TutorialModelMock },
   './model/CommentModel':{ CommentModel: CommentModelMock },
   './model/CommunityNoteModel': { CommunityNoteModel: CommunityNoteModelMock },
+  './model/UserModel': { UserModel: UserModelMock },
 }).App;
 
 describe('TutorialModel endpoints', () => {
