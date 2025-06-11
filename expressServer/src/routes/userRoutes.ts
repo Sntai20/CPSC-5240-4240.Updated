@@ -1,7 +1,6 @@
 import { Router } from 'express';
 import { UserModel } from '../model/UserModel';
 import passport = require('passport');
-import * as crypto from 'crypto';
 
 export function userRoutes(Users: UserModel) {
   const router = Router();
