@@ -9,8 +9,4 @@ import { Component } from '@angular/core';
 })
 export class WelcomeComponent {
   
-  loginWithSSO() {
-    // Redirect to your Express server's Google OAuth endpoint
-    window.location.href = 'http://localhost:8080/auth/google';
-  }
 }
